@@ -1,5 +1,5 @@
 import { Award, Building2, ChartColumn, CircleDollarSign, Globe2, GraduationCap, Landmark, Network, ShieldCheck } from 'lucide-react';
-import dancerDrum from '../assets/dancer-drum.png';
+import dancerDrum from '../assets/dancer-drum-neutral.png';
 import Button from '../components/Button.jsx';
 import Footer from '../components/Footer.jsx';
 import Navbar from '../components/Navbar.jsx';
@@ -46,14 +46,12 @@ export default function Home() {
               ))}
             </div>
           </div>
-          <div className="hero-copy">
+          <div className="hero-copy hero-title-group">
             <span className="eyebrow pill">A Legacy of Mastery</span>
-            <h1>
-              The Global
-              <br />
-              Benchmark for
-              <br />
-              <em>Musical Excellence</em>
+            <h1 className="hero-title">
+              <span className="hero-title-line">The Global</span>
+              <span className="hero-title-line">Benchmark for</span>
+              <span className="hero-title-line hero-title-accent">Musical Excellence</span>
             </h1>
           </div>
           <div className="access-panel staff-card">
