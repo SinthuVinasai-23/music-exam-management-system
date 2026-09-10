@@ -1,0 +1,30 @@
+{
+  "passed": [
+    "1 Continue Grading selects correct session",
+    "2 Start Grading initializes selected session",
+    "3 Marks validation and derived grade",
+    "4 Feedback and draft survive refresh",
+    "5 Submit opens confirmation; incomplete submission is blocked",
+    "6 Return to Edit preserves state and route",
+    "7 Confirm submits for admin review and shows success",
+    "8 Success returns to dashboard and reflects submission",
+    "9 Evaluations navigation",
+    "10 View Details opens selected read-only sheet",
+    "11 Close Details stays in evaluations",
+    "12 Settings gear from dashboard opens Profile",
+    "13 Settings gear from examinations opens Profile",
+    "14 Settings gear from evaluations opens Profile",
+    "16 Invalid profile and image are rejected",
+    "15 Profile save updates identity and opens Security",
+    "17 Security save shows Account Saved without persisting passwords",
+    "18 Bell opens notifications from shared header routes",
+    "19 Recent tasks toggle, outside click and Escape",
+    "20 Search stays within assigned records",
+    "21 Direct routes refresh without failures",
+    "22 Public and student regression routes",
+    "Pagination and saved session survive navigation",
+    "Desktop and mobile overflow checks"
+  ],
+  "failures": [],
+  "browserErrors": []
+}

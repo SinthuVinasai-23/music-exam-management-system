@@ -1,0 +1,83 @@
+Music Examination Management System — RUN THIS ZIP
+
+IMPORTANT
+After extracting this ZIP, package.json is in the SAME folder as this file.
+You do not need to enter another nested project folder.
+
+Prerequisite
+Install Node.js 22.12 or newer (LTS recommended).
+
+RUN
+1. Extract the ZIP completely.
+2. Open the extracted folder in VS Code.
+3. Open Terminal -> New Terminal.
+4. Confirm that the terminal folder contains package.json.
+5. Run:
+
+   npm install
+
+6. Then run:
+
+   npm run dev
+
+7. Open the Local URL printed by Vite, normally:
+
+   http://localhost:5173/
+
+CHANGE THE URL PATH TO OPEN EACH PAGE
+
+PUBLIC SITE
+http://localhost:5173/
+http://localhost:5173/faq
+http://localhost:5173/contact
+http://localhost:5173/register
+http://localhost:5173/login
+http://localhost:5173/staff-login
+
+STUDENT PORTAL
+http://localhost:5173/student/dashboard
+http://localhost:5173/student/application
+http://localhost:5173/student/application/selection
+http://localhost:5173/student/application/confirmation
+http://localhost:5173/student/payment
+http://localhost:5173/student/applications
+http://localhost:5173/student/admission
+http://localhost:5173/student/results
+http://localhost:5173/student/status
+http://localhost:5173/student/ceremony
+
+EXAMINER PORTAL
+http://localhost:5173/examiner/dashboard
+http://localhost:5173/examiner/examinations
+http://localhost:5173/examiner/evaluations
+http://localhost:5173/examiner/settings
+http://localhost:5173/examiner/notifications
+
+ADMIN / SUPER ADMIN PORTAL
+http://localhost:5173/admin/dashboard
+http://localhost:5173/admin/applications
+http://localhost:5173/admin/configurations
+http://localhost:5173/admin/users
+http://localhost:5173/admin/results
+http://localhost:5173/admin/ceremony
+http://localhost:5173/admin/email-logs
+http://localhost:5173/admin/system-health
+http://localhost:5173/admin/audit-logs
+http://localhost:5173/admin/security
+http://localhost:5173/admin/access-control
+
+Super Admin aliases also open the Admin portal in this frontend build:
+http://localhost:5173/super-admin/dashboard
+http://localhost:5173/superadmin/dashboard
+
+LATEST CROSS-PORTAL RESULT FLOW
+1. Examiner grading:
+   http://localhost:5173/examiner/examinations
+2. Admin result moderation:
+   http://localhost:5173/admin/results
+3. Student published results:
+   http://localhost:5173/student/results
+
+You can type/paste any URL above into the SAME browser tab while npm run dev is running.
+Do not start a second Vite server and do not change the port for different portals.
+Do not double-click index.html to run the project.

@@ -1,0 +1,149 @@
+[
+  {
+    "name": "Dashboard sidebar",
+    "reference": {
+      "x": 0,
+      "y": 0,
+      "width": 280,
+      "height": 1345
+    },
+    "actual": {
+      "x": 0,
+      "y": 0,
+      "width": 280,
+      "height": 1345
+    },
+    "difference": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    }
+  },
+  {
+    "name": "Dashboard first statistic",
+    "reference": {
+      "x": 358,
+      "y": 302,
+      "width": 324,
+      "height": 202
+    },
+    "actual": {
+      "x": 358,
+      "y": 301.984375,
+      "width": 324,
+      "height": 202
+    },
+    "difference": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    }
+  },
+  {
+    "name": "Dashboard first session",
+    "reference": {
+      "x": 358,
+      "y": 651,
+      "width": 498,
+      "height": 312
+    },
+    "actual": {
+      "x": 358,
+      "y": 650.984375,
+      "width": 498,
+      "height": 312
+    },
+    "difference": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    }
+  },
+  {
+    "name": "Settings card",
+    "reference": {
+      "x": 312,
+      "y": 318,
+      "width": 1071,
+      "height": 575
+    },
+    "actual": {
+      "x": 312,
+      "y": 317.578125,
+      "width": 1071,
+      "height": 574
+    },
+    "difference": {
+      "x": 0,
+      "y": -0.4,
+      "width": 0,
+      "height": -1
+    }
+  },
+  {
+    "name": "Settings first-name input",
+    "reference": {
+      "x": 345,
+      "y": 430,
+      "width": 281,
+      "height": 44
+    },
+    "actual": {
+      "x": 344,
+      "y": 430.375,
+      "width": 281.0625,
+      "height": 44
+    },
+    "difference": {
+      "x": -1,
+      "y": 0.4,
+      "width": 0.1,
+      "height": 0
+    }
+  },
+  {
+    "name": "Examination table",
+    "reference": {
+      "x": 324,
+      "y": 298,
+      "width": 1084,
+      "height": 492
+    },
+    "actual": {
+      "x": 324,
+      "y": 297.96875,
+      "width": 1084,
+      "height": 492
+    },
+    "difference": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    }
+  },
+  {
+    "name": "Venue image",
+    "reference": {
+      "x": 324,
+      "y": 1008,
+      "width": 716,
+      "height": 321
+    },
+    "actual": {
+      "x": 324,
+      "y": 1007.96875,
+      "width": 715.84375,
+      "height": 321
+    },
+    "difference": {
+      "x": 0,
+      "y": 0,
+      "width": -0.2,
+      "height": 0
+    }
+  }
+]

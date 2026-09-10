@@ -1,0 +1,79 @@
+import { useEffect, useState } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { ArrowRight, Bell, CalendarDays, CheckCircle2, ChevronLeft, ChevronRight, ClipboardCheck, ClipboardClock, ContactRound, Eye, ClipboardPenLine as ListPen, Music2, PlusCircle, RefreshCw } from 'lucide-react';
+import { useExaminer } from './ExaminerContext.jsx';
+import { assignedSessions, progress, resultFor, submissionError, SUBMITTED, validMark } from './examinerState.js';
+import { Avatar } from './ExaminerLayout.jsx';
+import { CandidateResultModal, ConfirmSubmitModal, EvaluationSuccessModal, ExaminerDialog } from './ExaminerDialogs.jsx';
+import venueImage from '../assets/mridangam-hands.png';
+
+const dateLabel = value => new Date(`${value}T12:00:00`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+function matches(session, search) { return `${session.cardTitle} ${session.id} ${session.candidates.map(c => `${c.name} ${c.registration}`).join(' ')}`.toLowerCase().includes(search.toLowerCase().trim()); }
+export function StatusPill({ value }) { return <span className={`examiner-pill ${value === 'Fail' ? 'fail' : value === 'Draft' ? 'draft' : ''}`}>{value}</span>; }
+export function ExamSessionCard({ session, onOpen }) {
+  const completion = progress(session);
+  return <article className="examiner-session-card"><div className="examiner-session-title"><h3>{session.cardTitle}</h3><StatusPill value={session.status === SUBMITTED ? 'Submitted' : session.status} /></div><p className="examiner-session-date"><CalendarDays size={15} />{dateLabel(session.date)} | {session.time}</p><div className="examiner-session-progress"><span>Session Progress</span><strong>{completion}%</strong></div><div className="examiner-thin-progress"><span style={{ width: `${completion}%` }} /></div><button className={`examiner-button ${session.status === 'Not Started' ? 'secondary start' : ''}`} onClick={onOpen}>{session.status === SUBMITTED ? 'View Submission' : session.status === 'Not Started' ? 'Start Grading' : 'Continue Grading'}{session.status === 'Draft' && <ArrowRight size={17} />}</button></article>;
+}
+export function ExaminerDashboard() {
+  const { state, dispatch, search, setNotice } = useExaminer();
+  const navigate = useNavigate();
+  const [filter, setFilter] = useState('All');
+  const [filterOpen, setFilterOpen] = useState(false);
+  const [recent, setRecent] = useState(false);
+  const [analytics, setAnalytics] = useState(false);
+  const sessions = assignedSessions(state);
+  const total = sessions.reduce((n, s) => n + s.candidates.length, 0);
+  const graded = sessions.reduce((n, s) => n + s.candidates.filter(c => validMark(c.marks)).length, 0);
+  const submitted = sessions.filter(s => s.status === SUBMITTED).reduce((n, s) => n + s.candidates.length, 0);
+  const shown = sessions.filter(s => (search || !s.supplementary) && matches(s, search) && (filter === 'All' || s.status === filter)).sort((a, b) => recent ? b.date.localeCompare(a.date) : 0);
+  const open = session => { if (session.status === SUBMITTED) { navigate('/examiner/evaluations'); return; } dispatch({ type: 'SELECT', sessionId: session.id }); navigate(`/examiner/examinations?session=${session.id}`); };
+  return <div className="examiner-dashboard"><p className="examiner-welcome">Welcome Back, {state.profile.firstName}</p><h1>Dashboard Overview</h1><section className="examiner-stats-section"><div className="examiner-section-heading"><h2>Evaluation Progress</h2><button className="examiner-text-button" onClick={() => setAnalytics(true)}>View Detailed Analytics</button></div><div className="examiner-stats">{[[ContactRound, 'Total Assigned', total], [ClipboardCheck, 'Graded', graded], [ClipboardClock, 'Pending', total - graded]].map(([Icon, label, value]) => <article className="examiner-stat" key={label}><span><Icon size={27} /></span><h3>{label}</h3><p><strong>{value}</strong> Candidates</p></article>)}</div></section><section className="examiner-sessions"><div className="examiner-section-heading"><h2>Assigned Exam Sessions</h2><div className="examiner-inline"><button className="examiner-small-button" aria-pressed={recent} onClick={() => setRecent(!recent)}>Recent</button><button className="examiner-small-button" aria-expanded={filterOpen} onClick={() => setFilterOpen(!filterOpen)}>Filter</button>{filterOpen && <select aria-label="Filter sessions" value={filter} onChange={e => setFilter(e.target.value)}>{['All', 'Draft', 'Not Started', SUBMITTED].map(v => <option key={v}>{v}</option>)}</select>}</div></div><div className="examiner-session-grid">{shown.map(s => <ExamSessionCard key={s.id} session={s} onOpen={() => open(s)} />)}{!search && <button className="examiner-request-session" disabled={state.requested} onClick={() => { dispatch({ type: 'REQUEST' }); setNotice('Additional session requested.'); }}><PlusCircle size={30} />{state.requested ? 'Additional Session Requested' : 'Request Additional Session'}</button>}</div>{!shown.length && <p className="examiner-empty">No assigned sessions match your search or filter.</p>}</section>{analytics && <ExaminerDialog title="Evaluation Analytics" className="examiner-confirm" onClose={() => setAnalytics(false)}><h2>Evaluation Analytics</h2><p>{graded} of {total} assigned candidates have marks recorded.</p><p>{submitted} candidates submitted for administrator review.</p><progress max={total} value={graded} /><button className="examiner-button" onClick={() => setAnalytics(false)}>Close</button></ExaminerDialog>}</div>;
+}
+export function Examinations() {
+  const { state, dispatch, search, setNotice } = useExaminer();
+  const [params] = useSearchParams();
+  const navigate = useNavigate();
+  const session = assignedSessions(state).find(s => s.id === (params.get('session') || state.activeSessionId));
+  const [candidateId, setCandidateId] = useState(null);
+  const [confirm, setConfirm] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState('');
+  const [markErrors, setMarkErrors] = useState({});
+  const [syllabus, setSyllabus] = useState(false);
+  useEffect(() => {
+    if (session && session.id !== state.activeSessionId) dispatch({ type: 'SELECT', sessionId: session.id });
+  }, [session?.id, state.activeSessionId, dispatch]);
+  useEffect(() => { setMarkErrors({}); setError(''); setCandidateId(null); setConfirm(false); setSuccess(false); }, [session?.id]);
+  if (!session) return <div className="examiner-empty"><h1>Examination unavailable</h1><p>This session is not assigned to you.</p><button className="examiner-button" onClick={() => navigate('/examiner/dashboard')}>Return to Dashboard</button></div>;
+  const readOnly = session.status === SUBMITTED;
+  const q = search.trim().toLowerCase();
+  const sessionMatches = `${session.id} ${session.cardTitle}`.toLowerCase().includes(q);
+  const candidates = session.candidates.filter(c => sessionMatches || `${c.name} ${c.registration}`.toLowerCase().includes(q));
+  const pages = Math.max(1, Math.ceil(candidates.length / 4));
+  const page = Math.min(session.page, pages);
+  const selectedCandidate = session.candidates.find(c => c.id === candidateId);
+  function mark(candidate, value) {
+    if (value !== '' && !validMark(value)) { setMarkErrors(e => ({ ...e, [candidate.id]: 'Enter a number from 0 to 100.' })); return; }
+    setMarkErrors(e => ({ ...e, [candidate.id]: '' }));
+    dispatch({ type: 'MARK', sessionId: session.id, candidateId: candidate.id, value });
+  }
+  function submit() {
+    const validation = submissionError(session);
+    if (validation || Object.values(markErrors).some(Boolean)) { setError(validation || 'Correct the highlighted marks before submitting.'); return; }
+    dispatch({ type: 'SUBMIT', sessionId: session.id }); setConfirm(false); setSuccess(true);
+  }
+  return <div className="examiner-examinations"><div className="examiner-session-meta"><span className="examiner-pill draft">CURRENT SESSION</span><small>ID: {session.id}</small>{readOnly && <StatusPill value={SUBMITTED} />}</div><h1>{session.subject} - {session.level} Performance Evaluation</h1><div className="examiner-exam-intro"><p>Evaluating standard performance metrics including technique, repertoire interpretation,<br className="examiner-desktop-break" /> and musicianship for the Spring 2024 Conservatory cycle.</p><div className="examiner-completion"><span>COMPLETION</span><div><progress max="100" value={progress(session)} /><strong>{progress(session)}%</strong></div></div></div><div className="examiner-table-scroll"><table className="examiner-candidate-table"><thead><tr><th>CANDIDATE</th><th>REGISTRATION<br />ID</th><th>MARKS (MAX<br />100)</th><th>GRADE</th><th>STATUS</th><th>ACTIONS</th></tr></thead><tbody>{candidates.slice((page - 1) * 4, page * 4).map(c => { const result = resultFor(c.marks); return <tr key={c.id}><td><div className="examiner-candidate-name"><Avatar size={28} /><div><strong>{c.name}</strong><small>{session.subject === 'Carnatic Vocal' ? 'Vocal / Carnatic' : session.subject}</small></div></div></td><td>{c.registration}</td><td><input aria-label={`Marks for ${c.name}`} aria-invalid={!!markErrors[c.id]} inputMode="decimal" value={c.marks} disabled={readOnly} onChange={e => mark(c, e.target.value)} />{markErrors[c.id] && <small role="alert" className="examiner-error">{markErrors[c.id]}</small>}</td><td><span className="examiner-derived-grade">{result.grade || 'Pending'}</span></td><td><StatusPill value={result.outcome} /></td><td><button className="examiner-icon" title={`${readOnly ? 'View' : 'Edit'} evaluation for ${c.name}`} aria-label={`${readOnly ? 'View' : 'Edit'} evaluation for ${c.name}`} onClick={() => setCandidateId(c.id)}><ListPen size={20} /></button></td></tr>; })}</tbody></table>{!candidates.length && <p className="examiner-empty">No assigned candidates match your search.</p>}</div><div className="examiner-table-controls"><span className="examiner-last-saved"><RefreshCw size={18} />{session.lastSaved ? `Last saved: ${new Date(session.lastSaved).toLocaleTimeString()}` : 'Not saved yet'}</span><div className="examiner-save-actions"><button className="examiner-button secondary" disabled={readOnly} onClick={() => { if (Object.values(markErrors).some(Boolean)) { setNotice('Correct the highlighted marks before saving.'); return; } dispatch({ type: 'SAVE', sessionId: session.id }); setNotice('Draft saved.'); }}>SAVE AS DRAFT</button><button className="examiner-button" disabled={readOnly} onClick={() => { setError(''); setConfirm(true); }}>{readOnly ? 'SUBMITTED FOR ADMIN REVIEW' : 'SUBMIT RESULTS TO ADMIN'}</button></div><nav className="examiner-pagination" aria-label="Candidate pages"><button aria-label="Previous page" disabled={page === 1} onClick={() => dispatch({ type: 'PAGE', sessionId: session.id, page: page - 1 })}><ChevronLeft size={17} /></button>{Array.from({ length: pages }, (_, i) => i + 1).map(p => <button key={p} aria-label={`Page ${p}`} aria-current={page === p ? 'page' : undefined} onClick={() => dispatch({ type: 'PAGE', sessionId: session.id, page: p })}>{p}</button>)}<button aria-label="Next page" disabled={page === pages} onClick={() => dispatch({ type: 'PAGE', sessionId: session.id, page: page + 1 })}><ChevronRight size={17} /></button></nav></div><section className="examiner-venue-grid"><div className="examiner-venue"><img src={venueImage} alt="Mridangam performance" /><div><span>VENUE INSIGHT</span><h2>{session.venue} Acoustics - Optimal</h2></div></div><aside className="examiner-guidelines"><Music2 size={29} /><h3>Evaluator Guidelines</h3><p>Ensure all technical components are weighted correctly according to the 2024 Syllabus. Observations on tone quality must be detailed in the individual candidate feedback reports.</p><button className="examiner-button secondary" onClick={() => setSyllabus(true)}>VIEW SYLLABUS</button></aside></section>{selectedCandidate && <CandidateResultModal key={selectedCandidate.id} session={session} candidate={selectedCandidate} readOnly={readOnly} onSave={feedback => dispatch({ type: 'FEEDBACK', sessionId: session.id, candidateId: selectedCandidate.id, feedback })} onClose={() => setCandidateId(null)} />}{confirm && <ConfirmSubmitModal error={error} onClose={() => setConfirm(false)} onConfirm={submit} />}{success && <EvaluationSuccessModal session={session} onReturn={() => navigate('/examiner/dashboard')} />}{syllabus && <ExaminerDialog title="Evaluator Syllabus" className="examiner-confirm" onClose={() => setSyllabus(false)}><h2>{session.subject} - {session.level}</h2><p>Assess technical proficiency, repertoire interpretation, tone quality, rhythmic accuracy, and overall musicianship. Record marks out of 100 and individual performance feedback.</p><p>Distinction: 90-100 · Merit: 75-89 · Pass: 60-74 · Fail: below 60.</p><button className="examiner-button" onClick={() => setSyllabus(false)}>Close</button></ExaminerDialog>}</div>;
+}
+export function Evaluations() {
+  const { state, search, dispatch } = useExaminer();
+  const [selected, setSelected] = useState(null);
+  const sessions = assignedSessions(state).filter(s => s.status === SUBMITTED);
+  const records = sessions.flatMap(s => s.candidates.map(c => ({ session: s, candidate: c }))).filter(({ session, candidate }) => `${session.cardTitle} ${candidate.name} ${candidate.registration}`.toLowerCase().includes(search.trim().toLowerCase()));
+  return <div className="examiner-records"><p className="examiner-welcome">Submission History</p><h1>Completed Evaluations</h1><p>Finalized evaluations submitted for administrator review.</p><div className="examiner-record-list">{records.map(({ session, candidate }) => <article key={candidate.id} className="examiner-record"><Avatar /><div><h2>{candidate.name}</h2><p>{session.subject} - {session.level} · {candidate.registration}</p><small>Submitted {new Date(session.submittedAt).toLocaleString()}</small></div><div><strong>{candidate.marks} / 100</strong><p>{resultFor(candidate.marks).grade}</p></div><StatusPill value={SUBMITTED} /><button className="examiner-button secondary" onClick={() => { setSelected({ session, candidate }); dispatch({ type: 'TASK', title: `Viewed completed evaluation for ${candidate.name}` }); }}><Eye size={17} />View Details</button></article>)}</div>{!records.length && <p className="examiner-empty">No completed evaluations match your search.</p>}{selected && <CandidateResultModal session={selected.session} candidate={selected.candidate} readOnly onClose={() => setSelected(null)} />}</div>;
+}
+export function ExaminerNotifications() {
+  const { state, dispatch, search } = useExaminer();
+  const navigate = useNavigate();
+  const notifications = state.notifications.filter(n => `${n.title} ${n.body}`.toLowerCase().includes(search.toLowerCase().trim()));
+  return <div className="examiner-records"><div className="examiner-section-heading"><div><p className="examiner-welcome">Examination Updates</p><h1>Notifications</h1></div><button className="examiner-button secondary" onClick={() => dispatch({ type: 'READ', id: 'all' })}>Mark all as read</button></div><div className="examiner-record-list">{notifications.map(n => <article className={`examiner-notification ${n.read ? '' : 'unread'}`} key={n.id}><Bell size={23} /><div><h2>{n.title}</h2><p>{n.body}</p></div>{n.sessionId && <button className="examiner-button secondary" onClick={() => { dispatch({ type: 'READ', id: n.id }); dispatch({ type: 'SELECT', sessionId: n.sessionId }); navigate(`/examiner/examinations?session=${n.sessionId}`); }}>Open Session<ArrowRight size={16} /></button>}{!n.read && <button className="examiner-icon" title="Mark as read" aria-label={`Mark ${n.title} as read`} onClick={() => dispatch({ type: 'READ', id: n.id })}><CheckCircle2 size={20} /></button>}</article>)}</div>{!notifications.length && <p className="examiner-empty">No notifications match your search.</p>}</div>;
+}
