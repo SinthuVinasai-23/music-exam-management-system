@@ -1,0 +1,26 @@
+Music Examination Management System
+
+Prerequisite: Install Node.js 22.12 or newer (LTS recommended).
+
+1. Extract the ZIP completely.
+2. Open the extracted "music-examination-system" folder in VS Code.
+3. Open a terminal in that folder.
+4. Run:
+
+   npm install
+
+5. Then run:
+
+   npm run dev
+
+6. Open the Local URL displayed by Vite, normally:
+
+   http://localhost:5173/
+
+Student Dashboard:
+http://localhost:5173/student/dashboard
+
+Examiner Dashboard:
+http://localhost:5173/examiner/dashboard
+
+Do not double-click index.html to run this project.

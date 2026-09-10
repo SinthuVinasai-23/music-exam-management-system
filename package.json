@@ -1,0 +1,11 @@
+{
+  "name": "music-exam-management-system",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently --names REGISTRATION,INVIGILATOR,STUDENT,TEACHER,SUPERVISOR \"npm --prefix registration-flow run dev -- --port 5173\" \"npm --prefix invigilator-admin run dev -- --port 5174\" \"npm --prefix student-dashboard run dev -- --port 5175\" \"npm --prefix teacher-portal run dev -- --port 5176\" \"npm --prefix supervisor-module run dev -- --port 5177\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
