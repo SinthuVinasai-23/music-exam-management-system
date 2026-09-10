@@ -60,7 +60,7 @@ export default function Home() {
             </div>
             <h2>Faculty &amp; Staff</h2>
             <p>Secure portal for accredited examiners and academic administrators to manage schedules, results, and curriculum standards.</p>
-            <Button>Staff Login</Button>
+            <Button to="/staff-login">Staff Login</Button>
           </div>
           <div className="access-panel candidate-card">
             <div className="round-icon">
@@ -70,7 +70,7 @@ export default function Home() {
             <p>Begin your journey toward international recognition. Track your grades, access study materials, and book your next examination.</p>
             <div className="button-row">
               <Button to="/register">Register</Button>
-              <Button variant="ghost">Login</Button>
+              <Button to="/login" variant="ghost">Login</Button>
             </div>
           </div>
         </section>

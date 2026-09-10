@@ -1,6 +1,6 @@
 import { Calendar, ChevronLeft } from 'lucide-react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import mridangamHands from '../assets/mridangam-hands.png';
 import Modal from '../components/Modal.jsx';
 
@@ -24,6 +24,7 @@ function validate(values) {
 }
 
 export default function Register() {
+  const navigate = useNavigate();
   const [role, setRole] = useState('student');
   const [values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState({});
@@ -53,8 +54,7 @@ export default function Register() {
       <section className="register-panel">
         <h1>Join the Ensemble</h1>
         <p>
-          Register to access exam schedules and your Student portal. If your child is under 12 years old, a parent or
-          guardian can create an account using the student's name.
+          Register for the appropriate portal. Student and parent accounts continue to their respective dashboards after email verification.
         </p>
         <div className="role-toggle" role="group" aria-label="Registration type">
           <button
@@ -100,7 +100,7 @@ export default function Register() {
           </label>
           <button className="btn btn-primary register-submit" type="submit">Register</button>
         </form>
-        <p className="login-note">Already have an account? <span className="login-note-link">Log in</span></p>
+        <p className="login-note">Already have an account? <Link className="login-note-link" to="/login" state={{ candidateRole: role }}>Log in</Link></p>
         {verified && <p className="frontend-note" role="status">Frontend simulation complete. Your account is marked verified in this demo.</p>}
       </section>
       <Modal
@@ -117,6 +117,8 @@ export default function Register() {
         onAction={() => {
           setVerificationOpen(false);
           setVerified(true);
+          const dashboardRole = role === 'parent' ? 'parent' : 'student';
+          navigate(`/dashboard/${dashboardRole}`);
         }}
       >
         <p>A harmony is waiting to be completed. Please verify your email address to finalize your enrollment.</p>
