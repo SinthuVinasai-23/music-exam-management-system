@@ -1,0 +1,95 @@
+/* Scoped Ensemble registration presentation; account rules live in the auth adapter. */
+.ensemble-registration { --reg-gold: #c90000; --reg-ink: #292a24; --reg-muted: #68665e; --reg-line: #dfd8d8; background: #faf8f8; color: var(--reg-ink); min-height: 100vh; display: flex; flex-direction: column; }
+.ensemble-header { background: rgba(255,255,255,.96); border-bottom: 1px solid #e5e0e0; box-shadow: 0 3px 12px #46080810; position: relative; z-index: 3; }
+.ensemble-nav { width: min(1440px, calc(100% - 96px)); margin: auto; min-height: 84px; display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+.ensemble-brand { display: flex; align-items: center; gap: 9px; font: 600 32px/1 var(--serif); flex-shrink: 0; }
+.ensemble-brand small { display: block; font: 500 9px/1.8 var(--sans); letter-spacing: 2.1px; margin-top: 6px; }
+.ensemble-clef { font: 58px/1 Georgia, 'Segoe UI Symbol', serif; color: var(--reg-gold); }
+.ensemble-links { display: flex; align-items: center; gap: 32px; font-size: 14px; }
+.ensemble-links a { transition: color .18s; padding: 12px 0; }
+.ensemble-links a:hover { color: var(--reg-gold); }
+.ensemble-login { border: 1px solid #96958f; padding: 10px 25px; border-radius: 999px; font-size: 14px; transition: background .18s, border-color .18s; }
+.ensemble-login:hover { background: #f0ebeb; border-color: var(--reg-gold); }
+.ensemble-menu { display: none; border: 0; color: var(--reg-ink); background: none; padding: 8px; }
+.ensemble-main { flex: 1; position: relative; isolation: isolate; overflow: hidden; }
+.ensemble-main::before { content: ''; position: absolute; z-index: -1; width: 690px; height: 690px; background: #e8dede; opacity: .5; border-radius: 50%; top: -230px; left: calc(50% - 420px); }
+.ensemble-decoration { position: absolute; inset: 0; z-index: -1; pointer-events: none; color: #e28a8a; opacity: .23; overflow: hidden; }
+.ensemble-decoration > span { position: absolute; right: -18px; top: 110px; font: 390px/1.2 Georgia, 'Segoe UI Symbol', serif; opacity: .55; transform: rotate(-8deg); }
+.ensemble-decoration svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.ensemble-content { width: min(1440px, calc(100% - 96px)); margin: auto; display: grid; grid-template-columns: minmax(0, .94fr) minmax(0, 1fr); column-gap: clamp(40px, 5vw, 90px); row-gap: 22px; padding: 32px 0 42px; align-items: start; }
+.ensemble-back { grid-column: 1; display: inline-flex; align-items: center; gap: 9px; width: fit-content; color: var(--reg-gold); font-size: 15px; font-weight: 600; transition: gap .18s; }
+.ensemble-back:hover { gap: 13px; }
+.ensemble-image { grid-column: 1; grid-row: 2; margin: 0; width: 100%; aspect-ratio: 1.02; border-radius: 18px; overflow: hidden; box-shadow: 0 14px 35px #50090915; }
+.ensemble-image img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+.ensemble-panel { grid-column: 2; grid-row: 1 / span 2; min-width: 0; padding-top: 3px; }
+.registration-heading h1 { font: 600 clamp(34px, 3.55vw, 62px)/1.12 var(--serif); color: var(--reg-gold); letter-spacing: -1.7px; margin: 0 0 12px; }
+.registration-heading p { font-size: 15px; line-height: 1.65; color: #55564f; margin: 0; max-width: 480px; }
+.ensemble-selector { display: flex; gap: 12px; margin: 22px 0 16px; }
+.ensemble-selector button { display: inline-flex; align-items: center; justify-content: center; gap: 22px; min-height: 46px; border: 1px solid #dc7373; border-radius: 999px; padding: 10px 24px; background: #ffffff8c; color: #3d3c35; font-size: 14px; font-weight: 600; cursor: pointer; transition: background .18s, border-color .18s, box-shadow .18s; }
+.ensemble-selector button:hover { background: #e8dfdf; border-color: var(--reg-gold); }
+.ensemble-selector button.active, .is-landing .ensemble-selector button:first-child { background: var(--reg-gold); border-color: var(--reg-gold); color: #fff; }
+.ensemble-selector button.active:hover { background: #3d3030; }
+.registration-notice { display: flex; align-items: flex-start; gap: 10px; padding: 12px 14px; border-radius: 10px; background: #ebe4e4; color: #7c1f1f; font-size: 13px; line-height: 1.55; margin: 0 0 20px; }
+.registration-notice svg { flex-shrink: 0; color: var(--reg-gold); margin-top: 1px; }
+.ensemble-form { border: 1px solid var(--reg-line); border-radius: 18px; padding: 24px; background: #fffffff0; box-shadow: 0 8px 28px #610b0b08; }
+.ensemble-form h2 { font: 600 25px/1.2 var(--serif); margin: 0 0 20px; letter-spacing: -.5px; }
+.registration-section { border: 0; padding: 0; margin: 0; min-width: 0; }
+.registration-section + .registration-section { border-top: 1px solid var(--reg-line); padding-top: 20px; margin-top: 20px; }
+.registration-section legend { display: flex; align-items: center; gap: 8px; color: #363931; font-size: 13px; font-weight: 600; padding: 0 0 14px; }
+.registration-section legend svg { color: #a62929; }
+.registration-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 15px 16px; }
+.registration-field { min-width: 0; }
+.registration-field > label { display: block; font-size: 11px; letter-spacing: .8px; text-transform: uppercase; font-weight: 600; color: #962525; line-height: 1.6; margin-bottom: 5px; }
+.registration-input-wrap { position: relative; }
+.ensemble-registration .registration-field input { display: block; width: 100%; min-width: 0; height: 44px; border: 1px solid #efbdbd; border-radius: 9px; padding: 10px 12px; background: #fdfcfc; color: var(--reg-ink); font-size: 14px; transition: border-color .18s, box-shadow .18s, background .18s; }
+.ensemble-registration .registration-field input:hover { border-color: #db7070; }
+.ensemble-registration .registration-field input:focus { outline: none; border-color: #a52929; box-shadow: 0 0 0 3px #cd17171c; background: #fff; }
+.ensemble-registration .registration-field input[type=password], .ensemble-registration .registration-field input[autocomplete=new-password] { padding-right: 42px; }
+.password-visibility { position: absolute; right: 3px; top: 3px; width: 38px; height: 38px; display: grid; place-items: center; border: 0; border-radius: 7px; background: transparent; color: #77746b; cursor: pointer; }
+.password-visibility:hover { color: var(--reg-gold); background: #efebeb; }
+.registration-fields .field-email { grid-column: 1 / -1; }
+.registration-passwords { margin-top: 15px; }
+.registration-age { color: var(--reg-muted); font-size: 12px; margin: 10px 0 0; }
+.registration-error { display: flex; align-items: flex-start; gap: 8px; font-size: 12px; line-height: 1.55; color: #963c35; margin: 8px 0 0; }
+.registration-error svg { flex-shrink: 0; margin-top: 2px; }
+.ensemble-form > .registration-error { padding: 12px; border: 1px solid #ecd0cb; background: #fff5f3; border-radius: 9px; margin-top: 15px; }
+.ensemble-registration .has-error input { border-color: #b55c52; }
+.registration-parent-action { margin-top: 14px; border: 1px solid #da6c6c; border-radius: 8px; background: #f4eded; color: #3e3131; padding: 10px 14px; font-size: 12px; font-weight: 600; cursor: pointer; }
+.ensemble-submit { display: flex; align-items: center; justify-content: center; min-height: 46px; width: 100%; margin-top: 20px; padding: 12px 20px; background: var(--reg-gold); color: #fff; border: 1px solid var(--reg-gold); border-radius: 999px; font-size: 12px; letter-spacing: 1.6px; text-transform: uppercase; font-weight: 700; cursor: pointer; transition: background .18s, box-shadow .18s, transform .18s; }
+.ensemble-submit:hover:not(:disabled) { background: #3c2f2f; box-shadow: 0 4px 12px #740d0d20; }
+.ensemble-submit:active:not(:disabled) { transform: translateY(1px); }
+.ensemble-submit:disabled { opacity: .52; cursor: not-allowed; }
+.ensemble-registration .login-note { color: var(--reg-muted); font-size: 12px; line-height: 1.7; text-align: center; margin: 14px 0 0; }
+.ensemble-registration .login-note a { color: #730a0a; text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 3px; transition: text-decoration-color .18s; }
+.ensemble-registration .login-note a:hover { text-decoration-color: currentColor; }
+.ensemble-footer { background: #2a2121; color: #e2dede; font-size: 11px; }
+.ensemble-footer > div { width: min(1440px, calc(100% - 96px)); margin: auto; min-height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 25px; }
+.ensemble-footer p { margin: 0; }
+.ensemble-footer nav { display: flex; flex-wrap: wrap; gap: 20px; }
+.ensemble-footer a:hover { color: #e88d8d; }
+.ensemble-registration a:focus-visible, .ensemble-registration button:focus-visible { outline: 2px solid #922424; outline-offset: 4px; }
+.is-landing .ensemble-content { align-items: center; padding-top: 32px; padding-bottom: 34px; }
+.is-landing .ensemble-panel { grid-row: 2; padding: 0; }
+.is-landing .registration-heading h1 { font-size: clamp(38px, 4.5vw, 72px); }
+.is-landing .registration-heading p { font-size: 17px; }
+.is-landing .ensemble-selector { margin: 28px 0; }
+.is-landing .registration-notice { font-weight: 600; font-size: 14px; background: transparent; padding: 0; margin-bottom: 22px; }
+.is-landing .ensemble-panel > p { font-size: 15px; color: var(--reg-muted); }
+.is-landing .login-note { border-top: 1px solid var(--reg-line); margin-top: 25px; padding-top: 18px; text-align: left; font-size: 14px; }
+@media (min-width: 1600px) { .has-form .ensemble-image { max-height: 620px; } .has-form .ensemble-content { padding-top: 38px; padding-bottom: 44px; } }
+@media (max-width: 1150px) { .ensemble-nav, .ensemble-content, .ensemble-footer > div { width: calc(100% - 64px); } .ensemble-links { gap: 20px; font-size: 13px; } .ensemble-content { column-gap: 34px; grid-template-columns: minmax(0,.85fr) minmax(0,1fr); } .ensemble-form { padding: 20px; } .registration-heading h1 { font-size: 40px; } .ensemble-selector button { padding-inline: 15px; font-size: 12px; } .ensemble-brand { font-size: 28px; } }
+@media (max-width: 900px) { .ensemble-menu { display: grid; margin-left: auto; } .ensemble-nav { min-height: 74px; gap: 15px; flex-wrap: wrap; } .ensemble-links { display: none; order: 4; width: 100%; padding-bottom: 15px; justify-content: center; flex-wrap: wrap; } .ensemble-links.open { display: flex; } .ensemble-content { grid-template-columns: minmax(0,.7fr) minmax(0,1fr); column-gap: 25px; } .registration-fields { gap: 14px 12px; } .ensemble-form { padding: 18px; } .ensemble-selector { gap: 8px; } .ensemble-selector button { flex: 1; padding-inline: 10px; } .ensemble-image { aspect-ratio: .72; } .registration-heading h1 { font-size: 34px; letter-spacing: -1px; } }
+@media (max-width: 780px) { .ensemble-content { grid-template-columns: 1fr; row-gap: 22px; width: min(620px, calc(100% - 48px)); } .ensemble-back { grid-column: 1; grid-row: 1; } .ensemble-panel { grid-column: 1; grid-row: 2; } .ensemble-image { grid-column: 1; grid-row: 3; aspect-ratio: 1.75; } .is-landing .ensemble-panel { grid-row: 2; } .registration-heading h1, .is-landing .registration-heading h1 { font-size: 42px; } .ensemble-selector button { flex: 0 1 auto; padding-inline: 24px; font-size: 14px; } .ensemble-footer > div { padding: 18px 0; flex-direction: column; align-items: flex-start; gap: 12px; } }
+@media (max-width: 480px) { .ensemble-nav { width: calc(100% - 32px); min-height: 72px; gap: 8px; } .ensemble-brand { font-size: 25px; gap: 5px; } .ensemble-brand small { font-size: 8px; letter-spacing: 1.6px; } .ensemble-clef { font-size: 44px; } .ensemble-login { padding: 8px 13px; font-size: 12px; } .ensemble-menu { padding: 5px; } .ensemble-content { width: calc(100% - 32px); padding-top: 22px; padding-bottom: 28px; row-gap: 18px; } .registration-heading h1, .is-landing .registration-heading h1 { font-size: 35px; } .registration-heading p, .is-landing .registration-heading p { font-size: 14px; } .ensemble-selector { margin-top: 20px; } .ensemble-selector button { flex: 1; min-height: 44px; font-size: 12px; padding: 10px 12px; gap: 9px; } .registration-notice { font-size: 12px; padding: 11px; margin-bottom: 18px; } .ensemble-form { padding: 18px 16px; border-radius: 14px; } .ensemble-form h2 { font-size: 24px; } .registration-fields { grid-template-columns: 1fr; gap: 14px; } .registration-fields .field-email { grid-column: auto; } .registration-field > label { font-size: 11px; } .ensemble-registration .registration-field input { height: 46px; font-size: 15px; } .password-visibility { height: 40px; } .ensemble-image { border-radius: 13px; aspect-ratio: 1.45; } .ensemble-footer > div { width: calc(100% - 32px); font-size: 10px; line-height: 1.7; } .ensemble-footer nav { gap: 16px; } .is-landing .ensemble-selector { margin-block: 22px; } .ensemble-decoration > span { font-size: 290px; right: -100px; } }
+@media (prefers-reduced-motion: reduce) { .ensemble-registration *, .ensemble-registration *::before, .ensemble-registration *::after { transition: none !important; } }
+
+@media (min-width: 781px) { .has-form .ensemble-content { grid-template-rows: 22px auto; } }
+.ensemble-footer p { color: #e2dede; }
+.ensemble-footer { font-size: 12px; }
+@media (max-width: 480px) { .ensemble-footer > div { font-size: 11px; } }
+
+.ensemble-registration .has-password input { padding-right: 44px; }
+/* Registration uses the same blended photograph and compact styling as login. */
+.registration-modern{background:#f7f4f4}.registration-modern .ensemble-main{background:#f7f4f4;min-height:calc(100vh - 145px)}.registration-modern .ensemble-main:before,.registration-modern .ensemble-decoration{display:none}.registration-modern .ensemble-content{width:100%;grid-template-columns:46% 54%;column-gap:0;row-gap:0;padding:40px 0;align-items:center;min-height:calc(100vh - 145px);position:relative}.registration-modern .ensemble-image{position:absolute;left:0;top:0;bottom:0;width:46%;height:100%;aspect-ratio:auto;border-radius:0;box-shadow:none;grid-row:auto}.registration-modern .ensemble-image img{object-position:47% center}.registration-modern .ensemble-image:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 55%,#f7f4f4);pointer-events:none}.registration-modern .ensemble-back{position:absolute;left:25px;top:20px;z-index:2;font-size:12px;background:#fcfcfcdd;padding:8px 13px;border-radius:6px}.registration-modern .ensemble-panel{grid-column:2;grid-row:auto;width:min(550px,85%);margin:auto;padding:32px;border:1px solid #e0d7d7;border-radius:20px;background:#fdfdfdf5;box-shadow:0 18px 55px #630b0b12;align-self:center}.registration-modern .registration-heading h1{font-family:Inter,Arial,sans-serif;font-size:31px;font-weight:650;letter-spacing:-1.1px;line-height:1.2;color:#25231f;margin:0 0 12px}.registration-modern .registration-heading p{font-size:13px;line-height:1.6;color:#bb2f2f}.registration-modern .ensemble-selector{display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:0;border-bottom:1px solid #dcd4d4;margin:24px 0 20px}.registration-modern .ensemble-selector button,.registration-modern.is-landing .ensemble-selector button:first-child{background:transparent;border:0;border-bottom:2px solid transparent;border-radius:0;color:#bd2f2f;padding:11px 0;min-height:40px;font-size:12px;font-weight:500;gap:7px;box-shadow:none}.registration-modern .ensemble-selector button.active{color:#7b0505;border-bottom-color:#7b0505;background:transparent}.registration-modern .ensemble-selector button:hover{color:#7b0505;background:transparent}.registration-modern .ensemble-form{padding:0;border:0;border-radius:0;box-shadow:none;background:transparent}.registration-modern .ensemble-form h2{font-family:Inter,Arial,sans-serif;font-size:19px;font-weight:600;letter-spacing:-.3px;margin:0 0 20px}.registration-modern .registration-field>label{font-size:9px;letter-spacing:1px;color:#a92a2a}.registration-modern .registration-field input{height:42px;font-size:12px;background:#fdfcfc;border-color:#dcd4d4;border-radius:8px}.registration-modern .registration-fields{gap:15px 14px}.registration-modern .ensemble-submit{border-radius:6px;font-size:13px;letter-spacing:.2px;box-shadow:none;font-weight:600;min-height:42px}.registration-modern .login-note{font-size:11px;line-height:1.8;border-top:1px solid #e1d9d9;padding-top:18px;margin-top:22px}.registration-modern .ensemble-panel>p:not(.login-note){font-size:12px;color:#bd2f2f}.registration-modern .registration-section legend{font-size:11px}.registration-modern .registration-age{font-size:10px}.registration-modern .ensemble-footer{background:#f7f4f4;color:#bd2f2f;border-top:1px solid #e0d7d7}.registration-modern .ensemble-footer p,.registration-modern .ensemble-footer a{font-size:10px}.registration-modern .ensemble-header{background:#fdfbfb;box-shadow:none}@media(max-width:1000px){.registration-modern .ensemble-panel{width:90%;padding:28px}.registration-modern .registration-heading h1{font-size:28px}}@media(max-width:700px){.registration-modern .ensemble-content{display:flex;flex-direction:column;min-height:0;padding:0 0 30px;gap:0}.registration-modern .ensemble-image{position:relative;left:auto;top:auto;bottom:auto;width:100%;height:220px;margin:0;border-radius:0;flex-shrink:0}.registration-modern .ensemble-image img{object-position:center 42%}.registration-modern .ensemble-image:after{background:linear-gradient(0deg,#f7f4f4,transparent 65%)}.registration-modern .ensemble-panel{width:calc(100% - 40px);max-width:550px;padding:26px;margin:0 auto}.registration-modern .ensemble-back{top:12px;left:15px}.registration-modern .ensemble-main{min-height:0}.registration-modern .registration-heading h1{font-size:27px}.registration-modern .registration-fields{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:400px){.registration-modern .ensemble-panel{width:calc(100% - 28px);padding:23px 20px}.registration-modern .ensemble-image{height:185px}.registration-modern .registration-fields{grid-template-columns:1fr}.registration-modern .registration-heading h1{font-size:25px}}
+/* Clearly coloured Student and Parent registration options. */
+.registration-modern .ensemble-selector{border-bottom:0;gap:12px}.registration-modern .ensemble-selector button,.registration-modern.is-landing .ensemble-selector button:first-child{background:#e2d6d6;color:#711313;border:1px solid #e79e9e;border-radius:8px;padding:12px 10px;font-weight:600;min-height:44px}.registration-modern .ensemble-selector button:hover{background:#ebadad;border-color:#ce3c3c}.registration-modern .ensemble-selector button.active{background:#7b0505;color:#fff;border-color:#7b0505}.registration-modern .ensemble-selector button.active:hover{background:#3e3131}

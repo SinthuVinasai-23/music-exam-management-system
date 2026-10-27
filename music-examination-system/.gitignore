@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.venv/
+server/data/
+__pycache__/
+.pytest_cache/
+.env
+
+auth-server/data/
+.env.*
+!.env.example
+
+.preview-tools/

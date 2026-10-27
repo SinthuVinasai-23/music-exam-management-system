@@ -1,0 +1,38 @@
+/* Compact application typography and a simple, open form layout. */
+.elegant-application{font:13px/1.6 Inter,Arial,sans-serif;padding:26px 5%;background:#faf9fb}
+.elegant-application .application-layout.student-shell{grid-template-columns:185px minmax(0,1fr);gap:30px;max-width:1160px}
+.elegant-application .application-card{background:#fff;border:0;border-radius:8px;padding:24px 28px;box-shadow:none}
+.elegant-application .application-intro{background:none;border:0;border-radius:0;padding:0 0 18px;margin:0 0 22px;border-bottom:1px solid #eae5ec;box-shadow:none}
+.elegant-application h1{font:600 23px/1.35 Inter,Arial,sans-serif!important;letter-spacing:-.4px!important;margin:0 0 8px}
+.elegant-application h2,.elegant-application h3,.elegant-application .exam-dialog h2{font:600 15px/1.5 Inter,Arial,sans-serif!important;letter-spacing:0;margin:0 0 8px}
+.elegant-application p,.elegant-application .application-intro>p,.elegant-application .exam-muted{font-size:12px;line-height:1.65;margin:6px 0 14px}
+.elegant-application label,.elegant-application legend,.elegant-application .form-grid label,.elegant-application .exam-location-field{font:500 12px/1.5 Inter,Arial,sans-serif!important;text-transform:none;letter-spacing:0}
+.elegant-application input:not([type=file]):not([type=radio]):not([type=checkbox]),.elegant-application select{font:400 13px/1.5 Inter,Arial,sans-serif!important;height:40px;min-height:40px;padding:9px 12px;margin-top:6px;border-radius:6px}
+.elegant-application small,.elegant-application .confirmation-kicker{font-size:11px;line-height:1.5}
+.elegant-application fieldset{margin:0!important;border:0;padding:0;min-width:0;background:none;box-shadow:none}
+.elegant-application .application-stepper{border:0;background:none;border-radius:0;padding:16px 0;box-shadow:none}
+.elegant-application .stepper-row{gap:12px;padding-bottom:32px}
+.elegant-application .stepper-row>span{width:30px;height:30px;font-size:12px}
+.elegant-application .stepper-row strong{font-size:12px}
+.elegant-application .stepper-row:not(:last-child):after{left:14px;top:30px;height:32px}
+.elegant-application .exam-selected-card,.elegant-application .exam-selection-card,.elegant-application .exam-record{background:none;border:0;border-bottom:1px solid #eae5ec;box-shadow:none;border-radius:0;padding:16px 0;margin:0}
+.elegant-application .exam-review-details{background:none;border:0;border-radius:0;padding:0 0 18px;margin:0;gap:18px;border-bottom:1px solid #eae5ec;font-size:12px}
+.elegant-application .exam-review-details dt{font-size:11px;color:#716b76}.elegant-application .exam-review-details dd{font-size:13px;margin:4px 0}
+.elegant-application .exam-empty,.elegant-application .exam-notice,.elegant-application .exam-teacher{background:none;border:0;border-radius:0;box-shadow:none;padding:10px 0;font-size:12px}
+.elegant-application .exam-medium.exam-medium-compact>label{border:0;background:none;box-shadow:none;min-width:0;padding:8px 12px 8px 0;font-size:12px}
+.elegant-application .student-gold-btn,.elegant-application .student-outline-btn,.elegant-application .upload-button,.elegant-application .application-buttons button{font:600 12px/1.4 Inter,Arial,sans-serif;letter-spacing:0;text-transform:none;padding:10px 16px;border-radius:6px;min-height:36px;box-shadow:none}
+.elegant-application .application-buttons,.elegant-application .application-card>h2,.elegant-application .exam-notice{margin-left:0;margin-right:0}
+.elegant-application .exam-dialog{font-size:13px;padding:24px}.elegant-application .exam-dialog label{font-size:12px}.elegant-application .exam-dialog p{font-size:12px}
+.elegant-application .exam-grade-options label{padding:8px 10px;font-size:12px}
+@media(max-width:700px){.elegant-application{padding:20px 4%}.elegant-application .application-layout.student-shell{grid-template-columns:1fr;gap:15px}.elegant-application .application-card{padding:20px 16px}.elegant-application .application-stepper{display:flex;gap:16px;justify-content:center;padding:0}.elegant-application .stepper-row{padding:0;gap:7px}.elegant-application .stepper-row:not(:last-child):after{display:none}.elegant-application h1{font-size:21px!important}.elegant-application .stepper-row strong{font-size:11px}}
+.elegant-application.application-selection .student-page-title{max-width:1160px;margin:0 auto 22px;padding:0;background:none;border:0;box-shadow:none}.elegant-application .exam-section-heading{background:none;border:0;padding:0;margin:20px 0 15px}.elegant-application .exam-dialog-backdrop .exam-dialog{max-height:90vh;overflow-y:auto}
+.student-portal .elegant-application h1,.student-portal .elegant-application .student-page-title h1{font:600 23px/1.35 Inter,Arial,sans-serif!important;letter-spacing:-.4px!important}@media(max-width:700px){.student-portal .elegant-application h1,.student-portal .elegant-application .student-page-title h1{font-size:21px!important}}
+/* Clear progress connections and explicit review labels. */
+.elegant-application .application-stepper .stepper-row{min-height:30px;position:relative;padding-bottom:32px}
+.elegant-application .application-stepper .stepper-row:last-child{padding-bottom:0}
+.elegant-application .application-stepper .stepper-row>span{position:relative;z-index:1}
+.elegant-application .application-stepper .stepper-row:not(:last-child):after{content:''!important;display:block!important;position:absolute;left:14px;top:30px;width:2px;height:32px;background:#cbb8d4;z-index:0}
+.elegant-application.application-selection .preferred-medium-title{font-size:16px!important;font-weight:600!important;margin-bottom:8px}
+.elegant-application .confirmation-field-label{display:block;font:500 11px/1.5 Inter,Arial,sans-serif;color:#716b76;margin:0 0 3px}
+.elegant-application .confirmation-selected-levels{font-size:13px;font-weight:600;color:#480b69;margin:3px 0 0}
+@media(max-width:700px){.elegant-application .application-stepper{gap:0}.elegant-application .application-stepper .stepper-row{flex:1;display:flex;flex-direction:column;align-items:center;padding:0;gap:7px}.elegant-application .application-stepper .stepper-row:not(:last-child):after{left:calc(50% + 15px);top:14px;width:calc(100% - 30px);height:2px}}

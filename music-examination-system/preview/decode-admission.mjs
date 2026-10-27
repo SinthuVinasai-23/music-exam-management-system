@@ -1,0 +1,2 @@
+import {PNG} from 'pngjs';import jsQR from 'jsqr';import {readFileSync} from 'node:fs';import assert from 'node:assert/strict';
+const png=PNG.sync.read(readFileSync('preview/admission-card-0.png'));const qr=jsQR(new Uint8ClampedArray(png.data),png.width,png.height);assert.ok(qr,'QR must scan from rendered PDF');assert.deepEqual(JSON.parse(qr.data),JSON.parse(readFileSync('preview/admission-card-payload.json')));console.log('PASS QR decoded from rendered PDF with all admission fields');

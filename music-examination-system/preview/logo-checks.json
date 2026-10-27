@@ -1,0 +1,10 @@
+{
+  "logoUnchanged": true,
+  "routes": [
+    "/",
+    "/register",
+    "/login"
+  ],
+  "mobileOverflow": false,
+  "pageErrors": []
+}

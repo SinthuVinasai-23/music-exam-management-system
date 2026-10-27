@@ -1,0 +1,13 @@
+# Security and trust boundaries
+
+- Backend authorization re-reads role, email verification, approval and session version for each protected request. An account cannot grant itself admin status or verify itself through a demo button.
+- Student access follows `students.user_id`; parent access follows `parent_students`. Transfer adds a new user to the existing student row and preserves `family_id`. Teacher access is scoped to assigned application-subject rows. Examiner and invigilator access is scoped through `session_staff`.
+- Passwords use Werkzeug scrypt with salts. New passwords must contain 15–128 characters. Login throttling is persisted for a 15-minute window. CSRF tokens are required for all modifying API operations, including login. Logout revokes signed-session replay; password changes revoke other sessions.
+- Production starts only with explicit session/media secrets and an HTTPS public URL. Cookies are Secure/HttpOnly/SameSite=Lax, expire after eight hours, and responses use CSP, HSTS, no-sniff, anti-framing and private no-store headers.
+- JPEG/PNG uploads are limited to 5 MB and 16 megapixels, decoded and normalized, stripped of original metadata and filenames, encrypted with AES-256-GCM, and delivered only after authorization. Media IDs are authenticated associated data. Store the key separately from encrypted files in production.
+- Candidate and financial database fields require an AES-256 encrypted production volume/database/backups; the development SQLite file is **not** itself encrypted. TLS terminates at the deployment reverse proxy. Development HTTP does not meet production transit-encryption requirements.
+- Payment amounts use integer cents. `BEGIN IMMEDIATE`, constraints and a unique request key serialize allocation checks and prevent concurrent teacher/overall overpayment. Pending allocations reserve balance but do not satisfy teacher-review payment gates.
+- Hosted checkout and verification are a provider interface; absent configuration fails closed. No raw card forms or stored PAN/CVV. QR payloads contain the requested candidate/exam data only. Admission codes are separate from account authentication credentials.
+- Reference material and original localStorage demos are not trusted backend records and are not imported as production data.
+
+Implementation references: [Flask security guidance](https://flask.palletsprojects.com/en/stable/web-security/) and [Python SMTP TLS documentation](https://docs.python.org/3.12/library/smtplib.html). Production review must verify reverse-proxy trust, external-provider idempotency, disaster recovery, key rotation, retention policy and institutional access rules.

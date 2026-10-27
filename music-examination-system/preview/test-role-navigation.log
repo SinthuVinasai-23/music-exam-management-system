@@ -1,0 +1,112 @@
+TAP version 13
+# Subtest: marks share the existing grade thresholds and reject invalid entries
+ok 1 - marks share the existing grade thresholds and reject invalid entries
+  ---
+  duration_ms: 2.3863
+  type: 'test'
+  ...
+# Subtest: session boundaries and finalized records reject writes
+ok 2 - session boundaries and finalized records reject writes
+  ---
+  duration_ms: 2.3055
+  type: 'test'
+  ...
+# Subtest: draft, page, feedback, submission and administrator-only publication
+ok 3 - draft, page, feedback, submission and administrator-only publication
+  ---
+  duration_ms: 1.0889
+  type: 'test'
+  ...
+# Subtest: FIFO sorts submission order and prevents skipping the head
+ok 4 - FIFO sorts submission order and prevents skipping the head
+  ---
+  duration_ms: 17.7972
+  type: 'test'
+  ...
+# Subtest: Blank signatures are rejected
+ok 5 - Blank signatures are rejected
+  ---
+  duration_ms: 0.4436
+  type: 'test'
+  ...
+# Subtest: Approval records endorsement, advances FIFO, adds roster entries and notification
+ok 6 - Approval records endorsement, advances FIFO, adds roster entries and notification
+  ---
+  duration_ms: 0.6023
+  type: 'test'
+  ...
+# Subtest: Rejection requires reason and records refund initiation
+ok 7 - Rejection requires reason and records refund initiation
+  ---
+  duration_ms: 0.6394
+  type: 'test'
+  ...
+# Subtest: Query validates details, notifies applicant, and pauses FIFO
+ok 8 - Query validates details, notifies applicant, and pauses FIFO
+  ---
+  duration_ms: 0.6954
+  type: 'test'
+  ...
+# Subtest: Session rejects invalid capacity and venue overlap
+ok 9 - Session rejects invalid capacity and venue overlap
+  ---
+  duration_ms: 0.6817
+  type: 'test'
+  ...
+# Subtest: Session creates new record and activity
+ok 10 - Session creates new record and activity
+  ---
+  duration_ms: 0.5023
+  type: 'test'
+  ...
+# Subtest: Slot assignment is reflected in roster and applicant events
+ok 11 - Slot assignment is reflected in roster and applicant events
+  ---
+  duration_ms: 0.5191
+  type: 'test'
+  ...
+# Subtest: Slot assignment rejects full sessions and discipline mismatch
+ok 12 - Slot assignment rejects full sessions and discipline mismatch
+  ---
+  duration_ms: 0.4772
+  type: 'test'
+  ...
+# Subtest: Multi-instrument candidate cannot overlap exams including 30-minute buffer
+ok 13 - Multi-instrument candidate cannot overlap exams including 30-minute buffer
+  ---
+  duration_ms: 0.5797
+  type: 'test'
+  ...
+# Subtest: Profile, security, read state persist through serialization without passwords
+ok 14 - Profile, security, read state persist through serialization without passwords
+  ---
+  duration_ms: 0.8535
+  type: 'test'
+  ...
+# Subtest: Session validates missing fields, invalid calendar dates, and invalid time values
+ok 15 - Session validates missing fields, invalid calendar dates, and invalid time values
+  ---
+  duration_ms: 0.4427
+  type: 'test'
+  ...
+# Subtest: payment selection is mandatory before approval
+ok 16 - payment selection is mandatory before approval
+  ---
+  duration_ms: 1.059
+  type: 'test'
+  ...
+# Subtest: uncollected payment requires a reason and keeps the same application pending
+ok 17 - uncollected payment requires a reason and keeps the same application pending
+  ---
+  duration_ms: 1.0875
+  type: 'test'
+  ...
+1..17
+# tests 17
+# suites 0
+# pass 17
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 126.9457

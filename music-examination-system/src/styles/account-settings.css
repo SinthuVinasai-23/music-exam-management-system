@@ -1,0 +1,41 @@
+.account-settings-compact{font:13px/1.6 Inter,Arial,sans-serif;color:#302b35}
+.account-settings-compact .student-page-title{max-width:1080px;width:90%;margin:30px auto 22px;padding:0}
+.account-settings-compact .student-page-title h1{font:600 25px/1.3 Inter,Arial,sans-serif;letter-spacing:-.5px;margin:0 0 6px;color:#2e2036}
+.account-settings-compact .student-page-title p{font-size:13px;line-height:1.6;margin:0;color:#716b76}
+.account-settings-compact .student-account-layout{display:grid;grid-template-columns:190px minmax(0,1fr);gap:28px;max-width:1080px;width:90%;margin:0 auto 45px;padding:0;align-items:start}
+.account-settings-compact .student-account-menu{display:grid;gap:5px;padding:12px;background:white;border:1px solid #ebe5ed;border-radius:10px;position:sticky;top:20px}
+.account-settings-compact .student-account-menu a{font-size:12px;font-weight:500;padding:10px 12px;border-radius:6px;color:#62586b}
+.account-settings-compact .student-account-menu a:hover{background:#faf4fc;color:#480b69}
+.account-settings-compact .learning-account-card{width:100%;max-width:none;margin:0;padding:26px;background:#fff;border:1px solid #ebe5ed;border-radius:12px;box-shadow:0 3px 16px #25152f04}
+.account-settings-compact .learning-account-card>svg{color:#480b69;margin-bottom:8px}
+.account-settings-compact h2{font:600 17px/1.4 Inter,Arial,sans-serif;letter-spacing:0;margin:0 0 6px;color:#302338}
+.account-settings-compact h3{font:600 14px/1.4 Inter,Arial,sans-serif;letter-spacing:0;margin:0 0 14px;color:#302338}
+.account-settings-compact p{font-size:12px;line-height:1.7;margin:8px 0 16px;color:#716b76}
+.account-settings-compact .ensemble-profile-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 20px;margin:22px 0 15px}
+.account-settings-compact label{display:grid;gap:6px;font-size:12px;font-weight:500;line-height:1.5;letter-spacing:0;text-transform:none;color:#5a5262;margin:0 0 14px}
+.account-settings-compact .ensemble-profile-fields label{margin:0}
+.account-settings-compact input,.account-settings-compact select{width:100%;box-sizing:border-box;min-height:39px;padding:9px 11px;margin:0;border:1px solid #ddd5e2;border-radius:6px;background:white;color:#332d39;font:400 13px/1.4 Inter,Arial,sans-serif;letter-spacing:0;box-shadow:none}
+.account-settings-compact input[readonly]{background:#f7f6f8;border-color:#eae6ed;color:#746d7a}
+.account-settings-compact form{display:block;margin:22px 0 0;padding:22px 0 0;border-top:1px solid #eee8f0}
+.account-settings-compact form>label{max-width:470px}
+.account-settings-compact details{background:#faf8fc;border:1px solid #eae3ee;border-radius:7px;padding:12px 14px;margin-top:18px}
+.account-settings-compact summary{font-size:12px;font-weight:600;color:#480b69;cursor:pointer}
+.account-settings-compact details form{margin-top:14px;padding-top:14px}
+.account-settings-compact button.student-gold-btn,.account-settings-compact button.student-outline-btn{font:600 12px/1.4 Inter,Arial,sans-serif;text-transform:none;letter-spacing:0;padding:9px 15px;min-height:36px;border-radius:6px;width:auto;white-space:normal;margin:0;box-shadow:none}
+.account-settings-compact [role=status]{font-size:12px;background:#f1f8f2;border:1px solid #dcebdd;padding:10px 12px;border-radius:6px;color:#2d603c;margin-top:18px}
+.account-settings-compact [role=alert]{font-size:12px;color:#b00020;background:#fff3f3;padding:10px 12px;border-radius:6px}
+@media(max-width:700px){.account-settings-compact .student-account-layout{grid-template-columns:1fr;gap:16px}.account-settings-compact .student-account-menu{position:static;display:flex;flex-wrap:wrap;padding:8px;gap:3px}.account-settings-compact .student-account-menu a{padding:8px;font-size:11px}.account-settings-compact .learning-account-card{padding:20px}.account-settings-compact .student-page-title h1{font-size:23px}.account-settings-compact .ensemble-profile-fields{gap:14px;grid-template-columns:1fr}}
+.student-portal .account-settings-compact .student-page-title h1{font:600 25px/1.3 Inter,Arial,sans-serif!important;letter-spacing:-.5px!important}@media(max-width:700px){.student-portal .account-settings-compact .student-page-title h1{font-size:23px!important}}
+.account-settings-compact .student-account-photo{padding:4px 0;background:transparent;border:0;box-shadow:none;display:flex;justify-content:center;position:sticky;top:25px}
+.account-settings-compact .student-account-photo img{display:block;width:160px;height:180px;object-fit:cover;object-position:54% 20%;border-radius:12px}
+.account-settings-compact .learning-account-card{background:transparent;border:0;box-shadow:none;border-radius:0;padding:0 0 20px}
+.account-settings-compact .student-page-title{background:transparent;border:0;box-shadow:none;border-radius:0}
+@media(max-width:700px){.account-settings-compact .student-account-photo{position:static;justify-content:flex-start}.account-settings-compact .student-account-photo img{width:110px;height:125px}.account-settings-compact .learning-account-card{padding:0}}
+.account-settings-compact .student-account-layout{margin-top:36px;grid-template-columns:210px minmax(0,1fr);gap:40px}
+.account-settings-compact .student-account-photo{justify-content:flex-start;padding:0;align-self:start}
+.account-settings-compact .student-account-photo img{width:180px;height:180px;border-radius:50%;object-fit:cover;object-position:55% 18%;border:5px solid #fff;outline:1px solid #e5dfe8;box-shadow:0 5px 18px #32113f0a}
+@media(max-width:700px){.account-settings-compact .student-account-layout{margin-top:24px;grid-template-columns:1fr;gap:25px}.account-settings-compact .student-account-photo img{width:130px;height:130px;border-width:4px}}
+.account-settings-compact .student-account-layout{grid-template-columns:210px minmax(0,1fr);gap:18px}
+.account-settings-compact .student-account-photo img{width:200px;height:200px}
+@media(max-width:700px){.account-settings-compact .student-account-layout{grid-template-columns:1fr;gap:22px}.account-settings-compact .student-account-photo img{width:150px;height:150px}}
+.account-settings-compact .student-account-layout{grid-template-columns:260px minmax(0,1fr);gap:22px}.account-settings-compact .student-account-photo img{width:250px;height:250px;border-radius:0;object-fit:cover;object-position:55% 18%}@media(max-width:700px){.account-settings-compact .student-account-layout{grid-template-columns:1fr;gap:22px}.account-settings-compact .student-account-photo img{width:220px;height:220px;max-width:100%}}

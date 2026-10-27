@@ -1,0 +1,106 @@
+.icfa-registration-brand{display:flex;align-items:center;gap:18px;text-decoration:none;color:#681a1a;margin-bottom:24px;width:fit-content}.icfa-registration-brand img{display:block;width:96px;height:96px;object-fit:contain;flex-shrink:0}.icfa-registration-brand>span{font:600 30px Georgia,serif;letter-spacing:2px}.icfa-registration-brand small{display:block;font:12px/1.6 Inter,Arial,sans-serif;letter-spacing:.2px;margin-top:6px;color:#6e675c}.eh-brand img,.ensemble-brand img,.brand img,.parent-brand img,.teacher-ensemble-brand img,.examiner-brand img{object-fit:contain!important;flex-shrink:0}.practice-dashboard .pd-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#681a1a;font:600 26px Georgia,serif}.practice-dashboard .pd-logo img{width:52px!important;height:52px!important;object-fit:contain}.sv-brand img{width:64px!important;height:64px!important;object-fit:contain!important}.student-brand img{object-fit:contain!important}@media(max-width:600px){.icfa-registration-brand img{width:76px;height:76px}.icfa-registration-brand>span{font-size:26px}.icfa-registration-brand small{font-size:11px;max-width:180px}.icfa-registration-brand{gap:13px;margin-bottom:20px}}
+
+.eh-header .eh-brand img{width:64px;height:64px;object-fit:contain}.eh-header .eh-brand{gap:12px}.eh-header .eh-nav{min-height:88px}@media(max-width:600px){.eh-header .eh-brand img{width:48px;height:48px}.eh-header .eh-nav{min-height:76px}}
+
+.parent-account-strip{display:flex;justify-content:space-between;align-items:center;gap:15px;width:90%;max-width:1280px;margin:20px auto 0;font:14px Inter,Arial,sans-serif;color:#7e1f1f}.parent-account-strip>span{display:flex;align-items:center;gap:8px}.parent-account-strip button{border:1px solid #ebafaf;border-radius:22px;background:white;padding:9px 18px;color:#791a1a;cursor:pointer}.eh-header{position:relative;z-index:100}.eh-back-top{cursor:pointer} @media(max-width:600px){.parent-account-strip{font-size:12px;flex-wrap:wrap}}
+
+.teacher-portal .sidebar,.examiner-sidebar,.sv-sidebar{top:88px!important;height:calc(100vh - 88px)!important}@media(max-width:600px){.teacher-portal .sidebar,.examiner-sidebar,.sv-sidebar{top:76px!important;height:calc(100vh - 76px)!important}}
+
+.eh-header{position:sticky!important;top:0;z-index:100}.ensemble-home #subjects,.ensemble-home #about,.ensemble-home #faq,.ensemble-home #contact,#home{scroll-margin-top:104px}.eh-header .eh-links a[aria-current=location]{border-bottom-color:#b22c2c}.eh-contact-layout .contact-info>h2{font-size:clamp(36px,4vw,56px);line-height:1.12;letter-spacing:-1px;color:#2f2525;margin:22px 0 35px}@media(max-width:600px){.ensemble-home #subjects,.ensemble-home #about,.ensemble-home #faq,.ensemble-home #contact,#home{scroll-margin-top:90px}}
+/* ICFA palette, drawn from the supplied red / purple cultural arts logo. */
+:root{--icfa-red:#d60000;--icfa-red-hover:#ae0000;--icfa-purple:#480b69;--icfa-surface:#fff;--icfa-soft:#fff5f5;--icfa-charcoal:#242424;--gold:var(--icfa-red);--gold-bright: #c90000;--line:#eddada;--bg:#fcfafa;--cream:#fff7f7;--panel:#fff;--soft:#fff1f1;--ink:var(--icfa-charcoal)}
+::selection{background:#f7caca;color:#410000}
+.eh-header .eh-brand{color:var(--icfa-charcoal)}
+.eh-header .eh-links a:hover,.eh-header .eh-links a[aria-current=location]{color:var(--icfa-red)}
+.eh-header .eh-links a[aria-current=location]{border-bottom-color:var(--icfa-red)}
+.teacher-portal{--gold:var(--icfa-red);--ink:var(--icfa-charcoal);--line:#eddada}
+.examiner-shell{--ex-gold:var(--icfa-red);--ex-border:#eddada}
+.examiner-marking button[aria-pressed=true]{background:#fff0f0;border-color:var(--icfa-red);color:#a30000}
+.examiner-portal-title,.learning-eyebrow{color:var(--icfa-purple)}
+/* Consistent ICFA surfaces and action hierarchy across every portal. */
+:root{--icfa-red:#c90000;--icfa-red-hover:#a50000;--icfa-purple:#480b69;--bg:#faf9fb;--cream:#fff;--panel:#fff;--soft:#fff2f2;--line:#eadfe9;--muted:#64606a}
+body{background:#faf9fb}
+.eh-header{background:rgba(255,255,255,.98);border-bottom:1px solid #eadfe9;box-shadow:0 3px 18px #480b6908}
+.eh-header .eh-nav-actions .eh-login,.ensemble-home .eh-button:not(.eh-outline){background:#c90000;border-color:#c90000;color:white}
+.eh-header .eh-nav-actions .eh-login:hover,.ensemble-home .eh-button:not(.eh-outline):hover{background:#a50000;border-color:#a50000}
+.ensemble-home{--eh-gold:#c90000;--eh-line:#eadfe9;background:#fff;color:#252229}
+.ensemble-home p{color:#64606a}
+.ensemble-home h2,.ensemble-home h3{color:#32113f}
+.ensemble-home .eh-hero{background:#faf7fc}
+.ensemble-home .eh-hero-photo{filter:saturate(.65)}
+.ensemble-home .eh-hero:before{background:linear-gradient(90deg,#fff 0%,#ffffffed 28%,#fff8faaf 43%,#480b6918 70%,#c9000028 100%)}
+.ensemble-home .eh-hero:after{color:#c9000012}
+.ensemble-home .eh-hero h1{color:#29222e}
+.ensemble-home .eh-hero h1 em{color:#c90000}
+.ensemble-home .eh-eyebrow{color:#780d8a}
+.ensemble-home .eh-button.eh-outline{background:#fff;color:#480b69;border-color:#bba4c8}
+.ensemble-home .eh-subject-card{background:white;border-color:#e9dfec;box-shadow:0 5px 18px #480b6906}
+.ensemble-home .eh-subject-card:hover{border-color:#d93030;box-shadow:0 10px 25px #c9000010}
+.ensemble-home .eh-subject-card>img{filter:saturate(.75)}
+.ensemble-home .eh-about-art>img{background:#faf7fc;filter:saturate(.7)}
+.ensemble-home .eh-faq{border-color:#e9dfec}
+.eh-contact-layout{background:#faf7fc!important}
+.eh-contact-layout .contact-form,.eh-contact-layout .contact-card{background:white!important;border-color:#e9dfec!important;box-shadow:0 10px 35px #480b6907!important}
+.eh-footer{background:#faf7fc!important;border-color:#e9dfec!important}
+.eh-footer h3,.eh-footer h4{color:#480b69}
+.ensemble-registration,.candidate-login,.staff-access,.parent-dashboard,.examiner-shell,.teacher-portal,.student-portal{background-color:#faf9fb}
+.ensemble-registration{--reg-gold:#c90000;--reg-ink:#29222e;--reg-muted:#64606a;--reg-line:#eadfe9}
+.candidate-login-panel,.candidate-card,.ensemble-registration .registration-card{background:#fff}
+.candidate-login-art{position:relative;isolation:isolate;background:#480b69}
+.candidate-login-art>img{filter:saturate(.5)}
+.candidate-login-art:after{content:'';position:absolute;inset:0;background:linear-gradient(140deg,#480b6930,#c9000022);pointer-events:none}
+.teacher-portal{--gold:#c90000;--line:#eadfe9}
+.examiner-shell{--ex-gold:#c90000;--ex-border:#eadfe9}
+.examiner-sidebar,.teacher-portal .sidebar,.pd-sidebar,.sv-sidebar{background:#fff!important;border-right:1px solid #eadfe9}
+.examiner-sidebar nav a.active,.pd-sidebar a.active{background:#fff1f1;color:#c90000;border-color:#c90000}
+.examiner-marking,.examiner-session-card,.examiner-record{background:#fff;border-color:#eadfe9}
+.examiner-marking .examiner-button:not(.secondary),.examiner-button:not(.secondary){background:#c90000;color:white;border-color:#c90000}
+.examiner-portal-title{color:#480b69}
+.examiner-mark-summary{background:#faf5fc;border-left:3px solid #480b69}
+.parent-main{background:radial-gradient(ellipse at 100% 0%,#f4eaf9,transparent 60%),#faf9fb}
+.student-portal.practice-dashboard{--pd-gold:#c90000;background:#faf9fb!important}
+.pd-box,.learning-account-card,.application-card{border-color:#eadfe9}
+.student-gold-btn,.parent-gold-btn,.candidate-submit,.staff-submit{background:#c90000!important;color:#fff!important;border-color:#c90000!important;box-shadow:0 4px 14px #c9000014}
+.student-gold-btn:hover,.parent-gold-btn:hover,.candidate-submit:hover,.staff-submit:hover{background:#a50000!important}
+input:focus-visible,select:focus-visible,textarea:focus-visible{outline-color:#480b69}
+@media(max-width:600px){.ensemble-home .eh-hero:before{background:linear-gradient(0deg,#fff 0%,#ffffffed 35%,#fff7fa65 72%,#480b6918 100%)}}
+.eh-contact-layout .eh-contact-form{background:#fff!important;border-color:#eadfe9!important;box-shadow:0 10px 35px #480b6907!important}.eh-contact-form label{color:#480b69}.eh-contact-form input,.eh-contact-form textarea{background:#fff;border-color:#ddd2e3}
+/* About ICFA displays the complete photograph with no coloured frame. */
+.ensemble-home .eh-about-art{height:auto;padding:0;background:transparent;border:0;box-shadow:none;overflow:visible}
+.ensemble-home .eh-about-art>img{display:block;width:100%;height:auto;max-height:none;object-fit:contain;aspect-ratio:auto;background:transparent;filter:none;border-radius:0;border:0;box-shadow:none}
+.icfa-portal-page .teacher-portal .sidebar,.icfa-portal-page .examiner-sidebar,.icfa-portal-page .sv-sidebar{top:0!important;height:100vh!important}
+.parent-account-strip nav{display:flex;align-items:center;gap:20px;font-weight:600;color:#480b69}
+.parent-account-strip nav a:hover{color:#c90000}
+@media(max-width:600px){.parent-account-strip nav{width:100%;padding-bottom:12px;border-bottom:1px solid #eadfe9}}
+/* Student portal: logo left, navigation centred, account controls right. */
+.carnatic-dashboard .pd-topbar.student-header{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:20px;height:auto;min-height:88px;padding:12px 3%;background:#fff!important}
+.carnatic-dashboard .student-portal-logo{grid-column:1;grid-row:1;justify-self:start;display:inline-flex;align-items:center}
+.carnatic-dashboard .student-portal-logo img{display:block;width:62px;height:62px;object-fit:contain}
+.carnatic-dashboard .pd-navlinks{grid-column:2;grid-row:1;justify-content:center;justify-self:center;width:auto;gap:22px;order:0}
+.carnatic-dashboard .pd-user{grid-column:3;grid-row:1;justify-self:end;gap:14px;min-width:0}
+.carnatic-dashboard .pd-mobile-toggle{display:none}
+@media(max-width:1200px) and (min-width:701px){.carnatic-dashboard .pd-topbar.student-header{grid-template-columns:1fr 1fr;gap:8px 20px}.carnatic-dashboard .pd-user{grid-column:2;grid-row:1}.carnatic-dashboard .pd-navlinks{grid-column:1/-1;grid-row:2;width:100%;gap:28px}.carnatic-dashboard .pd-navlinks a{padding:9px 0}}
+@media(max-width:700px){.carnatic-dashboard .pd-topbar.student-header{grid-template-columns:1fr auto;gap:10px;padding:10px 16px}.carnatic-dashboard .student-portal-logo img{width:50px;height:50px}.carnatic-dashboard .pd-mobile-toggle{display:flex;grid-column:2;grid-row:1;justify-self:end}.carnatic-dashboard .pd-user{grid-column:1/-1;grid-row:2;justify-self:stretch;justify-content:flex-end}.carnatic-dashboard .pd-navlinks{display:none;grid-column:1/-1;grid-row:3;justify-content:center;width:100%}.carnatic-dashboard .pd-navlinks.open{display:flex;flex-wrap:wrap;gap:8px 20px}.carnatic-dashboard .pd-navlinks a{padding:8px 0}}
+/* Keep the student header on one aligned row on desktop and laptop screens. */
+@media(min-width:901px){
+.carnatic-dashboard .pd-topbar.student-header{display:flex;flex-wrap:nowrap;align-items:center;justify-content:space-between;min-height:80px;padding:10px 2%;gap:16px}
+.carnatic-dashboard .student-portal-logo{flex:0 0 56px;align-self:center}
+.carnatic-dashboard .student-portal-logo img{width:56px;height:56px}
+.carnatic-dashboard .pd-navlinks{display:flex;order:0;flex:1 1 auto;min-width:0;width:auto;align-items:center;justify-content:center;gap:clamp(10px,1.5vw,25px)}
+.carnatic-dashboard .pd-navlinks a{font-size:12px;padding:12px 0;white-space:nowrap}
+.carnatic-dashboard .pd-user{display:flex;flex:0 0 auto;align-items:center;justify-content:flex-end;gap:12px}
+.carnatic-dashboard .pd-user button,.carnatic-dashboard .pd-user .pd-contact{font-size:11px;white-space:nowrap}
+.carnatic-dashboard .pd-mobile-toggle{display:none}
+}
+@media(min-width:901px) and (max-width:1100px){.carnatic-dashboard .pd-topbar.student-header{gap:10px;padding-inline:16px}.carnatic-dashboard .pd-user{gap:9px}.carnatic-dashboard .pd-profile strong{display:none}.carnatic-dashboard .pd-navlinks{gap:13px}.carnatic-dashboard .pd-user .pd-contact{display:inline-flex;padding:10px 12px}}
+.elegant-application .exam-location-field,.exam-workflow .exam-location-field{display:grid;gap:8px;font:500 14px/1.5 Inter,Arial,sans-serif!important;letter-spacing:0!important;text-transform:none!important;margin:20px 0}.exam-location-field select{font:400 14px/1.5 Inter,Arial,sans-serif!important;letter-spacing:0;text-transform:none;padding:12px 14px;border:1px solid #ddd5e2;border-radius:8px;background:#fff;color:#332d39;width:100%}.exam-location-field small{font:400 11px/1.5 Inter,Arial,sans-serif!important;color:#716b76;letter-spacing:0;text-transform:none}
+.exam-medium.exam-medium-compact{display:flex;flex-wrap:wrap;gap:12px;justify-content:flex-start}.exam-medium.exam-medium-compact>label{flex:0 0 auto;width:auto;min-width:105px;min-height:0;padding:10px 16px;margin:0;font-size:13px;line-height:1.4;border-radius:8px;gap:9px}.exam-medium.exam-medium-compact input{width:15px;height:15px;margin:0}
+.ceremony-real-qr{display:block;width:180px;height:180px;object-fit:contain;margin:20px auto;background:white}.ceremony-valid{display:inline-block;color:#236b3a;background:#edf8ef;border:1px solid #cfe7d3;border-radius:6px;padding:8px 14px;font-size:13px;font-weight:600}.ceremony-pass-view{max-width:620px;width:90%;margin:40px auto 70px}.ceremony-pass-view h1{font-size:25px;color:#480b69}.ceremony-pass-view article{padding:28px;background:white;border:1px solid #eadfe9;border-radius:12px;margin:24px 0}.ceremony-pass-view h2{font-size:21px}.ceremony-pass-view dl{display:grid;grid-template-columns:110px 1fr;gap:14px;font-size:13px}.ceremony-pass-view dt{color:#716b76}.ceremony-pass-view dd{margin:0;overflow-wrap:anywhere}
+.teacher-portal .header{position:sticky;top:0;display:flex;align-items:center;width:100%;height:84px;margin:0;padding:10px 26px;border:0;border-bottom:1px solid #eadfe9;border-radius:0;background:#fff;gap:24px;z-index:40}
+.teacher-portal .teacher-header-logo{display:inline-flex;align-items:center;flex-shrink:0;padding:0;background:transparent}
+.teacher-portal .teacher-header-logo img{display:block;width:62px;height:62px;object-fit:contain}
+.teacher-portal .header .global-search{margin-left:auto;max-width:380px;min-width:100px}
+.teacher-portal .header .header-actions{margin-left:auto;display:flex;align-items:center;gap:10px}
+.icfa-portal-page .teacher-portal .sidebar{top:84px!important;height:calc(100vh - 84px)!important}
+@media(max-width:700px){.teacher-portal .header{height:76px;padding:10px 14px;gap:12px}.teacher-portal .teacher-header-logo img{width:50px;height:50px}.teacher-portal .header .global-search{display:none}.teacher-portal .header .header-actions{gap:4px}.icfa-portal-page .teacher-portal .sidebar{top:76px!important;height:calc(100vh - 76px)!important}}
+.teacher-portal .dashboard-bottom{grid-template-columns:minmax(0,1fr)}.teacher-portal .student-application-link{font-weight:600;text-align:left;text-decoration:underline;text-underline-offset:3px}

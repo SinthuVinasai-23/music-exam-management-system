@@ -1,0 +1,109 @@
+TAP version 13
+# (node:37928) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: persistent exam workflow
+    # Subtest: syllabus is required and explained
+    ok 1 - syllabus is required and explained
+      ---
+      duration_ms: 33.5673
+      type: 'test'
+      ...
+    # Subtest: one grade creates pending records and real PDF
+    ok 2 - one grade creates pending records and real PDF
+      ---
+      duration_ms: 194.7516
+      type: 'test'
+      ...
+    # Subtest: duplicates are rejected within and across applications
+    ok 3 - duplicates are rejected within and across applications
+      ---
+      duration_ms: 25.5225
+      type: 'test'
+      ...
+    # Subtest: Tamil multi-grade multi-subject records
+    ok 4 - Tamil multi-grade multi-subject records
+      ---
+      duration_ms: 133.3523
+      type: 'test'
+      ...
+    # Subtest: teacher ACLs block unrelated items and PDFs
+    ok 5 - teacher ACLs block unrelated items and PDFs
+      ---
+      duration_ms: 21.4846
+      type: 'test'
+      ...
+    # Subtest: approval and review statuses propagate to student
+    ok 6 - approval and review statuses propagate to student
+      ---
+      duration_ms: 51.8449
+      type: 'test'
+      ...
+    # Subtest: admin filters and reroutes with approval reset
+    ok 7 - admin filters and reroutes with approval reset
+      ---
+      duration_ms: 26.7733
+      type: 'test'
+      ...
+    # Subtest: Grade 4 needs Grade 3; mixed subjects and one next exam
+    ok 8 - Grade 4 needs Grade 3; mixed subjects and one next exam
+      ---
+      duration_ms: 139.9206
+      type: 'test'
+      ...
+    # Subtest: withheld results and invalid medium blocked
+    ok 9 - withheld results and invalid medium blocked
+      ---
+      duration_ms: 22.2061
+      type: 'test'
+      ...
+    # Subtest: opening and exact inclusive deadline boundary
+    ok 10 - opening and exact inclusive deadline boundary
+      ---
+      duration_ms: 209.9025
+      type: 'test'
+      ...
+    # Subtest: parent registration, child isolation and login
+    ok 11 - parent registration, child isolation and login
+      ---
+      duration_ms: 254.2966
+      type: 'test'
+      ...
+    # Subtest: age, invalid teacher, unknown subject and malformed dates
+    ok 12 - age, invalid teacher, unknown subject and malformed dates
+      ---
+      duration_ms: 25.5547
+      type: 'test'
+      ...
+    # Subtest: next Grade 5 is available only after Grade 4 passed
+    ok 13 - next Grade 5 is available only after Grade 4 passed
+      ---
+      duration_ms: 102.9229
+      type: 'test'
+      ...
+    # Subtest: restart preserves database and hashed credentials
+    ok 14 - restart preserves database and hashed credentials
+      ---
+      duration_ms: 143.3572
+      type: 'test'
+      ...
+    1..14
+ok 1 - persistent exam workflow
+  ---
+  duration_ms: 2806.0687
+  type: 'test'
+  ...
+# Subtest: default selection needs no prior teacher or Admin clearance
+ok 2 - default selection needs no prior teacher or Admin clearance
+  ---
+  duration_ms: 1300.2295
+  type: 'test'
+  ...
+1..2
+# tests 16
+# suites 0
+# pass 16
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4465.7316

@@ -1,0 +1,201 @@
+TAP version 13
+# (node:33708) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: connected admin workflows persist and enforce roles
+ok 1 - connected admin workflows persist and enforce roles
+  ---
+  duration_ms: 2369.7325
+  type: 'test'
+  ...
+# (node:36804) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: persistent exam workflow
+    # Subtest: syllabus is required and explained
+    ok 1 - syllabus is required and explained
+      ---
+      duration_ms: 41.8949
+      type: 'test'
+      ...
+    # Subtest: one grade creates pending records and real PDF
+    ok 2 - one grade creates pending records and real PDF
+      ---
+      duration_ms: 212.9523
+      type: 'test'
+      ...
+    # Subtest: duplicates are rejected within and across applications
+    ok 3 - duplicates are rejected within and across applications
+      ---
+      duration_ms: 28.9085
+      type: 'test'
+      ...
+    # Subtest: Tamil multi-grade multi-subject records
+    ok 4 - Tamil multi-grade multi-subject records
+      ---
+      duration_ms: 161.0842
+      type: 'test'
+      ...
+    # Subtest: teacher ACLs block unrelated items and PDFs
+    ok 5 - teacher ACLs block unrelated items and PDFs
+      ---
+      duration_ms: 24.5956
+      type: 'test'
+      ...
+    # Subtest: approval and review statuses propagate to student
+    ok 6 - approval and review statuses propagate to student
+      ---
+      duration_ms: 54.7617
+      type: 'test'
+      ...
+    # Subtest: admin filters and reroutes with approval reset
+    ok 7 - admin filters and reroutes with approval reset
+      ---
+      duration_ms: 27.0621
+      type: 'test'
+      ...
+    # Subtest: Grade 4 needs Grade 3; mixed subjects and one next exam
+    ok 8 - Grade 4 needs Grade 3; mixed subjects and one next exam
+      ---
+      duration_ms: 271.4731
+      type: 'test'
+      ...
+    # Subtest: withheld results and invalid medium blocked
+    ok 9 - withheld results and invalid medium blocked
+      ---
+      duration_ms: 51.9452
+      type: 'test'
+      ...
+    # Subtest: opening and exact inclusive deadline boundary
+    ok 10 - opening and exact inclusive deadline boundary
+      ---
+      duration_ms: 415.7544
+      type: 'test'
+      ...
+    # Subtest: parent registration, child isolation and login
+    ok 11 - parent registration, child isolation and login
+      ---
+      duration_ms: 367.5412
+      type: 'test'
+      ...
+    # Subtest: age, invalid teacher, unknown subject and malformed dates
+    ok 12 - age, invalid teacher, unknown subject and malformed dates
+      ---
+      duration_ms: 43.6006
+      type: 'test'
+      ...
+    # Subtest: next Grade 5 is available only after Grade 4 passed
+    ok 13 - next Grade 5 is available only after Grade 4 passed
+      ---
+      duration_ms: 259.0798
+      type: 'test'
+      ...
+    # Subtest: restart preserves database and hashed credentials
+    ok 14 - restart preserves database and hashed credentials
+      ---
+      duration_ms: 265.487
+      type: 'test'
+      ...
+    1..14
+ok 2 - persistent exam workflow
+  ---
+  duration_ms: 4239.1672
+  type: 'test'
+  ...
+# Subtest: default selection needs no prior teacher or Admin clearance
+ok 3 - default selection needs no prior teacher or Admin clearance
+  ---
+  duration_ms: 2021.29
+  type: 'test'
+  ...
+# Subtest: submission order remains sorted and an individually selected student can be approved
+ok 4 - submission order remains sorted and an individually selected student can be approved
+  ---
+  duration_ms: 20.1036
+  type: 'test'
+  ...
+# Subtest: Blank signatures are rejected
+ok 5 - Blank signatures are rejected
+  ---
+  duration_ms: 1.0083
+  type: 'test'
+  ...
+# Subtest: Approval records endorsement, advances FIFO, adds roster entries and notification
+ok 6 - Approval records endorsement, advances FIFO, adds roster entries and notification
+  ---
+  duration_ms: 2.2133
+  type: 'test'
+  ...
+# Subtest: Rejection requires reason and records refund initiation
+ok 7 - Rejection requires reason and records refund initiation
+  ---
+  duration_ms: 1.2834
+  type: 'test'
+  ...
+# Subtest: Query validates details, notifies applicant, and pauses FIFO
+ok 8 - Query validates details, notifies applicant, and pauses FIFO
+  ---
+  duration_ms: 1.4161
+  type: 'test'
+  ...
+# Subtest: Session rejects invalid capacity and venue overlap
+ok 9 - Session rejects invalid capacity and venue overlap
+  ---
+  duration_ms: 1.1551
+  type: 'test'
+  ...
+# Subtest: Session creates new record and activity
+ok 10 - Session creates new record and activity
+  ---
+  duration_ms: 0.7317
+  type: 'test'
+  ...
+# Subtest: Slot assignment is reflected in roster and applicant events
+ok 11 - Slot assignment is reflected in roster and applicant events
+  ---
+  duration_ms: 0.7002
+  type: 'test'
+  ...
+# Subtest: Slot assignment rejects full sessions and discipline mismatch
+ok 12 - Slot assignment rejects full sessions and discipline mismatch
+  ---
+  duration_ms: 0.8464
+  type: 'test'
+  ...
+# Subtest: Multi-instrument candidate cannot overlap exams including 30-minute buffer
+ok 13 - Multi-instrument candidate cannot overlap exams including 30-minute buffer
+  ---
+  duration_ms: 0.8571
+  type: 'test'
+  ...
+# Subtest: Profile, security, read state persist through serialization without passwords
+ok 14 - Profile, security, read state persist through serialization without passwords
+  ---
+  duration_ms: 1.7769
+  type: 'test'
+  ...
+# Subtest: Session validates missing fields, invalid calendar dates, and invalid time values
+ok 15 - Session validates missing fields, invalid calendar dates, and invalid time values
+  ---
+  duration_ms: 1.4642
+  type: 'test'
+  ...
+# Subtest: payment selection is mandatory before approval
+ok 16 - payment selection is mandatory before approval
+  ---
+  duration_ms: 1.1318
+  type: 'test'
+  ...
+# Subtest: uncollected payment requires a reason and keeps the same application pending
+ok 17 - uncollected payment requires a reason and keeps the same application pending
+  ---
+  duration_ms: 1.3256
+  type: 'test'
+  ...
+1..17
+# tests 31
+# suites 0
+# pass 31
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 6757.3149

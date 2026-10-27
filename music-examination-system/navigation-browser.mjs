@@ -1,0 +1,9 @@
+import {chromium} from 'playwright';
+const browser=await chromium.launch({channel:'msedge',headless:true});
+const page=await browser.newPage({viewport:{width:1440,height:900}});const errors=[];page.on('pageerror',e=>errors.push(e.message));
+for(const route of ['/','/contact','/register?type=student','/register?type=parent','/login','/forgot-password','/staff-login','/faq','/about','/subjects']){await page.goto('http://127.0.0.1:5003'+route);await page.locator('.eh-header').waitFor();if(await page.locator('.eh-header').count()!==1||await page.locator('.eh-footer').count()!==1)throw Error('Navigation missing '+route);}
+await page.goto('http://127.0.0.1:5003/');await page.locator('.eh-links').getByRole('link',{name:'Staff Login',exact:true}).click();await page.locator('input[type=email]').fill('staff@example.com');await page.locator('input[type=password]').fill('preview-password');await page.locator('.staff-submit').click();for(const name of ['Teacher','Supervisor','Invigilator','Examiner','Admin','Super Admin']){if(!await page.getByRole('button',{name,exact:true}).isVisible())throw Error('Missing staff role '+name);}
+await page.goto('http://127.0.0.1:5003/contact');await page.locator('.eh-footer').getByRole('link',{name:'Subjects',exact:true}).click();await page.waitForURL('**/#subjects');
+await page.setViewportSize({width:375,height:812});await page.goto('http://127.0.0.1:5003/register?type=parent');await page.getByRole('button',{name:'Open navigation'}).click();await page.locator('.eh-links').getByRole('link',{name:'Staff Login',exact:true}).waitFor({state:'visible'});if(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1))throw Error('Mobile overflow');
+if(errors.length)throw Error(errors.join('\n'));console.log('PASS: shared navigation across 10 pages, all six staff roles, cross-page subject links and mobile layout');await browser.close();
+

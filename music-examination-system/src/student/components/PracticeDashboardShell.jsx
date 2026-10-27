@@ -1,0 +1,10 @@
+import {useState} from 'react';
+import {Link,NavLink,useNavigate} from 'react-router-dom';
+import {Home,FileText,Clock,ChartNoAxesCombined,ClipboardCheck,Trophy,Bell,CircleUserRound,Search,Menu,X} from 'lucide-react';
+import {useStudent} from '../context/StudentContext.jsx';
+import {authRequest} from '../../auth/api.js';
+export default function PracticeDashboardShell({children,search,onSearch}){
+ const {profile,toast}=useStudent(),navigate=useNavigate(),[open,setOpen]=useState(false);
+ const items=[[Home,'Dashboard','/student/dashboard'],[FileText,'Application','/student/application'],[ChartNoAxesCombined,'Results','/student/results'],[ClipboardCheck,'Status','/student/status'],[Trophy,'Ceremony','/student/ceremony']];
+ return <div className="student-portal practice-dashboard carnatic-dashboard"><div className="pd-body"><header className="student-header pd-topbar"><Link className="student-portal-logo" to="/student/dashboard" aria-label="ICFA student dashboard"><img src="/icfa-official-logo.png" alt="ICFA logo"/></Link><button className="pd-mobile-toggle" aria-label="Toggle student navigation" aria-expanded={open} onClick={()=>setOpen(!open)}>{open?<X/>:<Menu/>}</button><nav className={'student-nav-links pd-navlinks '+(open?'open':'')} aria-label="Student portal navigation">{items.map(([Icon,name,to])=><NavLink key={name} to={to} end onClick={()=>setOpen(false)}>{name}</NavLink>)}</nav><div className="pd-user"><Link to="/student/status" aria-label="Application updates"><Bell size={21}/></Link><Link className="pd-profile" to="/student/account" aria-label="Account Settings"><CircleUserRound size={30}/><strong>{profile.firstName||profile.displayName}</strong><span>⌄</span></Link><button onClick={async()=>{await authRequest('logout');navigate('/', {replace:true});}}>Log out</button><Link className="pd-contact" to="/contact">Contact Us</Link></div></header>{toast&&<div className="pd-toast" role="status">{toast.message}</div>}<main className="pd-main">{children}</main></div></div>;
+}

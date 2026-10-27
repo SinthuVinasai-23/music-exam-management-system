@@ -1,0 +1,1 @@
+import QRCode from 'qrcode';import jsQR from 'jsqr';import {PNG} from 'pngjs';import {readFileSync} from 'node:fs';const p=readFileSync('preview/admission-card-payload.json','utf8');const png=PNG.sync.read(await QRCode.toBuffer(p,{width:1000,margin:4,errorCorrectionLevel:'M'}));console.log(p.length,!!jsQR(new Uint8ClampedArray(png.data),png.width,png.height));

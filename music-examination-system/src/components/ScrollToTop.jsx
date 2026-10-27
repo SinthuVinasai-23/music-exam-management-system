@@ -1,0 +1,3 @@
+import {useLayoutEffect} from 'react';
+import {useLocation,useNavigate} from 'react-router-dom';
+export default function ScrollToTop(){const location=useLocation(),navigate=useNavigate();useLayoutEffect(()=>{if(location.hash){navigate({pathname:location.pathname,search:location.search},{replace:true,state:{...location.state,scrollTo:decodeURIComponent(location.hash.slice(1))}});return}const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches,behavior=reduced?'auto':'smooth';if(location.state?.scrollTo){const frame=requestAnimationFrame(()=>document.getElementById(location.state.scrollTo)?.scrollIntoView({behavior,block:'start'}));return()=>cancelAnimationFrame(frame)}window.scrollTo({top:0,left:0,behavior:'auto'})},[location.key,navigate]);return null}

@@ -1,0 +1,4 @@
+import {writeFileSync} from 'node:fs';
+import {admissionPdf,admissionPayload} from '../auth-server/portal-pdf.mjs';
+const app={id:'ICFA-2026-001',studentId:'STU-1001',firstName:'Ananya',lastName:'Nair',candidateName:'Ananya Nair',session:'2026 Music Examination',preferredMedium:'English',applicationDate:'2026-10-26T10:00:00Z',updatedAt:'2026-10-26T11:00:00Z',applicationStatus:'approved',entries:[{subject:'Miruthangam',grade:'Grade 1',teacher:'Kugenthiran Kanagenthiram',teacherSchool:'International Centre for Fine Arts',approvalStatus:'approved',teacherApprovalDate:'2026-10-26T11:00:00Z'},{subject:'Bharatanatyam',grade:'Grade 2',teacher:'Smt. Vanitha Kugenthiran',teacherSchool:'International Centre for Fine Arts',approvalStatus:'approved',teacherApprovalDate:'2026-10-26T11:00:00Z'}]};
+writeFileSync('preview/admission-card-sample.pdf',await admissionPdf(app));writeFileSync('preview/admission-card-payload.json',JSON.stringify(admissionPayload(app)));

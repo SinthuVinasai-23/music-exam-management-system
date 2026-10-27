@@ -1,0 +1,3 @@
+export const applicationPdfUrl=app=>`/api/portal/applications/${encodeURIComponent(app.id)}/pdf`;
+export function saveApplication(app){const link=document.createElement('a');link.href=applicationPdfUrl(app)+'?download=1';link.download=app.id+'-application.pdf';link.click();return true;}
+export function printApplication(app){const frame=document.createElement('iframe');frame.style.cssText='position:fixed;width:1px;height:1px;bottom:0;right:0;border:0';frame.title='Print application PDF';frame.src=applicationPdfUrl(app);frame.onload=()=>{setTimeout(()=>{frame.contentWindow.focus();frame.contentWindow.print();},700);};document.body.append(frame);setTimeout(()=>frame.remove(),120000);}
